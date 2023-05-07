@@ -15,11 +15,11 @@ function Login() {
       </S.HeaderWrapper>
       <S.MainWrapper>
        
-        <S.MainLeft>
+        {/* <S.MainLeft>
         </S.MainLeft>
         <S.MainRight>
           <Outlet />
-        </S.MainRight>
+        </S.MainRight> */}
       </S.MainWrapper>
     </S.PageWrapper>
   );
