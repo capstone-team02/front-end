@@ -59,9 +59,12 @@ function LoginForm() {
             >
               비밀번호 찾기
             </S.FindPassword>
-            {""}|{""}
-            <S.Register>
-              <Link to="signUp">회원가입</Link>
+            {" | "}
+            <S.Register
+              onClick={() => {
+                navigate("/signup");
+              }}>
+                회원가입
             </S.Register>
           </S.FindIdPasswordSignUp>
         </S.Options>
