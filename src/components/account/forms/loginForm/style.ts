@@ -48,7 +48,7 @@ export const LoginWrapper = styled.div`
   padding: 0px;
   width: 555px;
   height: 155px;
-  left: 443px;
+  left: 442.5px;
   margin-top :105px;
 `;
 export const IdWrapper = styled.div`
@@ -166,9 +166,7 @@ export const Options = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
-padding: 0px;
-gap: 10px;s
-
+margin-left:20px;
 width: 350px;
 height: 27px;
 top: 605px;
@@ -183,6 +181,7 @@ font-weight: 600;
 font-size: 14px;
 cursor: pointer;
 margin-right: 20px;
+margin-left:10px;
 
 `;
 export const FindPassword = styled.span`

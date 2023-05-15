@@ -2,25 +2,25 @@ import styled from "styled-components";
 import GlobalStyles from "../../../../styles/GlobalStyles";
 
 export const FormContainer = styled.div`
-  width: 736px;
+  width: 600px;
   height: 100%;
   min-height: 740px;
   justify-content: center;
 `;
 
 export const Form = styled.form`
-  width: 485px;
+  width: 600px;
   height: 100%;
   margin-left: 80px;
-  margin-top: 60px;
+  margin-top: 15px;
   align-items: center;
+
 `;
 
 export const Title = styled.div`
   width: 194px;
   height: 58px;
-  top: 125px;
-  margin-top: 60px;
+  margin-top: 15px;
 
   font-family: "gosanja";
   font-style: normal;
@@ -29,8 +29,10 @@ export const Title = styled.div`
   line-height: 58px;
 `;
 export const optionDiv = styled.div`
+margin-top:30px;
   width: 430px;
   height: 36px;
+  margin-left:50px;
   display: flex;
   align-items: center;
 `;
@@ -77,10 +79,9 @@ export const opt2 = styled.div`
 `;
 
 export const Notice = styled.div`
-  font-weight: 400;
+  font-weight: 700;
   font-size: 12px;
-  line-height: 17px;
-  margin-top: 20px;
+  margin-top: 15px;
   color : #ACACAC;
 `;
 export const Radio = styled.input`
@@ -113,23 +114,36 @@ export const IsFemaleText = styled.label`
 `;
 
 export const NameWrapper = styled.div`
-  width: 375px;
+  width: 510px;
   height: 91px;
+  margin-top: 44px;
   display: flex;
-  margin-bottom: 20px;
   flex-direction: column;
+  box-sizing: b;
 `;
 export const InputSubmitWrapper = styled.div`
-  width: 437px;
-  height: 56px;
+  width: 510px;
+  height: 66px;
   display: flex;
   flex-direction: row;
 `;
-export const HalfSubmit = styled.button`
+export const HalfSubmitForEmail = styled.button`
   margin-left: auto;
   width: 69px;
   height: 29px;
-  left: 725px;
+
+  top: 438px;
+  margin-top: 20px;
+  background: #ededed;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+`;
+
+export const HalfSubmitForNickname = styled.button`
+  margin-left: auto;
+  width: 69px;
+  height: 29px;
+
   top: 438px;
   margin-top: 20px;
   background: #ededed;
@@ -140,13 +154,12 @@ export const HalfInput = styled.input`
   margin-top: 10px;
   flex-direction: row;
   align-items: center;
-  padding: 16px 30px;
+  padding: 14px 30px;
   gap: 80px;
-  width: 180px;
-  height: 25px;
+  width: 120px;
+  height: 24px;
   left: 428px;
   top: 379px;
-  margin-bottom: 20px;
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 20px;
@@ -157,13 +170,14 @@ export const SubmitText = styled.a`
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 17px;
 `;
 export const EmailWrapper = styled.div`
-  margin-top:40px;
-  width: 375px;
+  margin-top:44px;
   height: 91px;
-  margin-bottom:20px;
+  width: 510px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: b;
 `;
 
 export const EmailInputWrapper = styled.div`
@@ -171,89 +185,74 @@ export const EmailInputWrapper = styled.div`
   height: 56px;
 `;
 
-export const CofirmBtn = styled.span`
-  position: relative;
-  right: 10px;
-  top: 23px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  cursor: pointer;
-`;
 
 export const PasswordWrapper = styled.div`
-  width: 386px;
-  height: 91px;
-  margin-top: 20px;
+  width: 373px;
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: b;
 `;
 
 export const VerifyPasswordWrapper = styled.div`
-  width: 386px;
-  height: 91pxF;
-  margin-top: 40px;
+  width: 373px;
+  margin-top: 13px;
   display: flex;
   flex-direction: column;
   box-sizing: b;
 `;
 
 export const ErrorMessage = styled.div`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  margin-left: 16px;
-  margin-top: 10px;
-  color: var(--orangeColor);
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 15px;
+  width: 375px;
+  color: #E02C2C;
 `;
 export const CheckedMessage = styled.div`
-  margin-top:40px;
-  font-weight: 400;
-  font-size: 14px;
-  margin-left: 16px;
-  margin-top: 20px;
-  color: var(--orangeColor);
+font-family: "Pretendard";
+font-weight: 700;
+font-size: 12px;
+margin-top: 15px;
+  color: #117E15;
 `;
 
 export const SignUpBtn = styled.button`
-  width: 270px;
-  height: 50px;
-  margin-top: 60px;
-  background-color: var(--orangeColor);
-  border: none;
-  border-radius: 40px;
-  color: black;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  cursor: pointer;
-  margin-bottom: 80px;
+padding: 15px 30px;
+display: flex;
+flex-direction: column;
+width: 143px;
+height: 59px;
+justify-content: center;
+margin-top: 30px;
+margin-left:228.5px;
+background: #000000;
+border-radius: 20px;
 `;
-
-export const SubmitFail = styled.div`
-  width: 350px;
-  height: 19px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  margin-left: 16px;
-  margin-top: 10px;
-  color: var(--orangeColor);
-`;
+export const SignUpTxt = styled.a`
+width: 83px;
+height: 29px;
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 29px;
+color: #FFFFFF;
+`
 
 
 export const Input = styled.input`
-  margin-top: 10px;
-  flex-direction: row;
-  align-items: center;
-  padding: 16px 30px;
-  gap: 80px;
-  width: 375px;
-  height: 25px;
-  left: 428px;
-  top: 379px;
-
-  background: #ffffff;
-  border: 1px solid #8a8a8a;
-  border-radius: 20px;
+margin-top: 10px;
+padding: 14px 30px;
+gap: 80px;
+width: 313px;
+height: 24px;
+left: 428px;
+top: 379px;
+background: #ffffff;
+border: 1px solid #8a8a8a;
+border-radius: 20px;
 `;
 
 export const Label = styled.label`
@@ -263,3 +262,11 @@ export const Label = styled.label`
   font-size: 21px;
   line-height: 25px;
 `;
+
+export const Bar = styled.div`
+margin-top:30px;
+width: 600px;
+height: 0px;
+
+border: 2px solid #C4C4C4;
+`

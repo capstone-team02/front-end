@@ -52,10 +52,10 @@ function SignUpForm() {
 
   const handleEmailCheck = async () => {
     const email = getValues("email");
-    setNicknameChecked(true);
+    setEmailChecked(true);
     console.log(email);
     try {
-      await nicknameCheckPost(email).then((res) => {
+      await emailCheckPost(email).then((res) => {
         console.log(res.data);
       });
       console.log("success");
@@ -142,7 +142,7 @@ function SignUpForm() {
             })}
             type="text"
           />
-            <S.HalfSubmit onClick={handleNicknameCheck}><S.SubmitText>중복 확인</S.SubmitText></S.HalfSubmit>
+            <S.HalfSubmitForNickname onClick={handleNicknameCheck}><S.SubmitText>중복 확인</S.SubmitText></S.HalfSubmitForNickname>
           </S.InputSubmitWrapper>
           {dirtyFields.nickname ? (
             errors?.nickname?.message ? (
@@ -157,9 +157,7 @@ function SignUpForm() {
               <S.ErrorMessage>중복검사 해주세요.</S.ErrorMessage>
             )
           ) : (
-            <S.Notice>
-              8~20자의 영문 대/소문자, 숫자, 특수문자로 설정해주세요.
-            </S.Notice>
+           null
           )}
         </S.NameWrapper>
 
@@ -167,7 +165,7 @@ function SignUpForm() {
           <S.Label>이메일</S.Label>
           <S.EmailInputWrapper>
           <S.InputSubmitWrapper>
-            <S.HalfInput
+            <S.Input
               {...register("email", {
                 required: "이메일을 입력해주세요.",
                 pattern: {
@@ -177,13 +175,14 @@ function SignUpForm() {
               })}
               type="text"
             /> 
-            <S.HalfSubmit onClick={handleEmailCheck}><S.SubmitText>중복 확인</S.SubmitText></S.HalfSubmit>
+            <S.HalfSubmitForEmail onClick={handleEmailCheck}><S.SubmitText>중복 확인</S.SubmitText></S.HalfSubmitForEmail>
+            
           </S.InputSubmitWrapper>
-          {dirtyFields.nickname ? (
-            errors?.nickname?.message ? (
-              <S.ErrorMessage>{errors.nickname?.message}</S.ErrorMessage>
-            ) : nicknameChecked ? (
-              validNickname ? (
+          {dirtyFields.email ? ( 
+            errors?.email?.message ? (
+              <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
+            ) : emailChecked ? (
+              validEmail ? (
                 <S.CheckedMessage>사용 가능한 이메일입니다.</S.CheckedMessage>
               ) : (
                 <S.ErrorMessage>사용중인 이메일입니다.</S.ErrorMessage>
@@ -191,8 +190,11 @@ function SignUpForm() {
             ) : (
               <S.ErrorMessage>중복검사 해주세요.</S.ErrorMessage>
             )
-          ) : (null)}
+          ) : (
+           null
+          )}
           </S.EmailInputWrapper>
+          
         </S.EmailWrapper>
         
 
@@ -242,13 +244,9 @@ function SignUpForm() {
             <S.Notice>비밀번호를 다시 한 번 입력해주세요.</S.Notice>
           )}
         </S.VerifyPasswordWrapper>
-        
-        <S.SignUpBtn>회원가입하기</S.SignUpBtn>
-        {/* 
-           
-            
-           
-           */}
+        <S.Bar></S.Bar>
+        <S.SignUpBtn><S.SignUpTxt>다음단계</S.SignUpTxt></S.SignUpBtn>
+        {}
       </S.Form>
     </S.FormContainer>
   );

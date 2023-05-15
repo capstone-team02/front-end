@@ -10,3 +10,7 @@ export interface ISignupForm{
     nickname : string,
     isFemale :boolean;
 }
+
+export interface ISignupForm{
+    email : string
+}
