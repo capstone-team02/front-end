@@ -10,7 +10,7 @@ export const FormContainer = styled.div`
 export const Form = styled.form`
   width: 555px;
   height: 610px;
-  margin-top : 200px;
+  margin-top : 159px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@ export const LogoText1 = styled.h1`
 display:flex;
 font-family:'gosanja';
 font-style: normal;
-font-weight: 1000;
+font-weight: 300;
 font-size: 15px;
 color: #000000;
 `
@@ -48,7 +48,7 @@ export const LoginWrapper = styled.div`
   padding: 0px;
   width: 555px;
   height: 155px;
-  left: 443px;
+  left: 442.5px;
   margin-top :105px;
 `;
 export const IdWrapper = styled.div`
@@ -107,20 +107,25 @@ export const Label = styled.label`
   color: #000000;
 `;
 export const SubmitFail = styled.div`
-  width: 350px;
-  height: 19px;
+display: flex;
+flex-direction: row;
+align-items: center;
+padding-left: 30px;
+
+width: 400px;
+height: 27px;
+top: 605px;
+
   font-family: "Pretendard";
-  font-weight: 400;
-  margin-left: 16px;
+  font-weight: 500;
+  margin-left:60px;
   margin-top: 10px;
   font-size: 13px;
-  line-height: 19px;
-  color: var(--orangeColor);
 `;
 
 export const LoginBtn = styled.button`
   display: flex;
-  margin-top: 105px;
+  margin-top: 60px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -161,9 +166,7 @@ export const Options = styled.div`
 display: flex;
 flex-direction: row;
 align-items: center;
-padding: 0px;
-gap: 10px;s
-
+margin-left:20px;
 width: 350px;
 height: 27px;
 top: 605px;
@@ -178,6 +181,7 @@ font-weight: 600;
 font-size: 14px;
 cursor: pointer;
 margin-right: 20px;
+margin-left:10px;
 
 `;
 export const FindPassword = styled.span`
