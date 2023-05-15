@@ -14,11 +14,12 @@ function LoginForm() {
   const onValid = async (loginForm: ILoginForm) => {
     const success = await handleLogin(loginForm);
     if (success) {
-      navigate(-1);
+      navigate("/signup");
     } else {
       setSubmitFail(true);
     }
   };
+
   return (
     <S.FormContainer onSubmit={handleSubmit(onValid)}>
       <S.Form>
@@ -51,7 +52,7 @@ function LoginForm() {
             <S.FindId>
               <Link to="find-id">아이디 찾기</Link>
             </S.FindId>{" "}
-             |  {" "}
+            |{" "}
             <S.FindPassword
               onClick={() => {
                 navigate("find-password");
@@ -63,15 +64,15 @@ function LoginForm() {
             <S.Register
               onClick={() => {
                 navigate("/signup");
-              }}>
-                회원가입
+              }}
+            >
+              회원가입
             </S.Register>
           </S.FindIdPasswordSignUp>
         </S.Options>
         <S.LoginBtn>
           <S.LoginText>LOGIN</S.LoginText>
         </S.LoginBtn>
-
       </S.Form>
     </S.FormContainer>
   );
