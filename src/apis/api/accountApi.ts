@@ -17,6 +17,9 @@ export const loginPost = (loginForm: ILoginForm) =>
     .then((response) => {
       if (response.token) {
         localStorage.setItem("token", response.token);
+        localStorage.setItem("email", response.email);
+        localStorage.setItem("role", response.role);
+        localStorage.setItem("nickname", response.nickname);
       }
     });
 
