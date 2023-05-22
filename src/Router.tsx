@@ -1,9 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import React from "react";
-import LoginForm from "./components/account/forms/loginForm/loginFrom"
-import SignUpForm from "./components/account/forms/signupFrom/signupForm";
-import MypageForm from "./components/account/forms/mypageForm/mypageFrom"; 
+import SignUp from "./pages/signup/Signup";
 import Mypage from "./pages/mypage/Mypage";
 import Login from "./pages/login/Login";
 
@@ -12,26 +10,24 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
- 
       {
         path: "login",
-       // element: <Login />,
+        // element: <Login />,
         children: [
           {
             path: "",
-            element: <LoginForm />,
+            element: <Login />,
           },
-         
         ],
       },
-      
+
       {
         path: "signup",
         //element: <SignUp />,
         children: [
           {
             path: "",
-            element: <SignUpForm />,
+            element: <SignUp />,
           },
           // {
           //   path: "success",
@@ -45,7 +41,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <MypageForm />,
+            element: <Mypage />,
           },
           // {
           //   path: "success",
