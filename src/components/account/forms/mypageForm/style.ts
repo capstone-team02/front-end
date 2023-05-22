@@ -109,7 +109,7 @@ export const WelcomeWrapper = styled.div`
   padding: 0px;
   gap: 22px;
 
-  width: 267px;
+  width: 100%;
   height: 43px;
 `;
 

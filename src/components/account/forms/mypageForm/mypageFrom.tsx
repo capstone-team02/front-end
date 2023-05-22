@@ -1,8 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { ILoggedInForm } from "../../../../interfaces/accountForm";
+import { useEffect, useState } from "react";
 import * as S from "./style";
 
 function MypageForm() {
   const navigate = useNavigate();
+  const [nickname, setNickname] =useState("");
+  const [email, setEmail] = useState("");
+
 
   return (
     <S.Form>
@@ -15,7 +20,7 @@ function MypageForm() {
           <S.ProfileImage></S.ProfileImage>
           <S.UserInfoContainer>
             <S.WelcomeWrapper>
-              <S.Nickname>서울살이</S.Nickname>
+              <S.Nickname>{'nickname'}</S.Nickname>
               <S.Welcome>님 반갑습니다.</S.Welcome>
             </S.WelcomeWrapper>
             <S.InfoWord>프로필을 입력하세요.</S.InfoWord>

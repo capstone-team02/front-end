@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import React from "react";
+import React, { useEffect } from "react";
 import App from "./App";
 import { RouterProvider } from "react-router-dom";
 import Router from "./Router";
@@ -17,6 +17,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <RouterProvider router={Router} />
+        
       </RecoilRoot>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

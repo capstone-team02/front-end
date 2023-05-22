@@ -4,8 +4,10 @@ import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import React from "react";
 import GlobalStyles from "./styles/GlobalStyles";
-import { ILoggedInAtom, loggedInAtom, tokenInfo } from "./atoms/loggedInAtom";
-
+import { ILoggedInAtom, loggedInAtom } from "./atoms/loggedInAtom";
+import { getLoggedInInfo } from "./apis/api/accountApi";
+import { useEffect } from "react";
+import axios from "axios";
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -17,13 +19,13 @@ const Wrapper = styled.div`
 
 function App() {
   // const setLoggedIn = useSetRecoilState<ILoggedInAtom>(loggedInAtom);
-  // const { data } = useQuery(["loggedInInfo"], tokenInfo, {
+  // tokenInfo();
+  // const { data } = useQuery(["loggedInInfo"], getLoggedInInfo, {
   //   onSuccess: (data) => {
-  //     setLoggedIn(data)
+  //     console.log(axios.defaults.headers.common["Authorization"]);
   //   },
   // });
-
-  tokenInfo();
+  getLoggedInInfo();
 
   return (
     <Wrapper>

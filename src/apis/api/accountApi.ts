@@ -2,10 +2,12 @@ import axios from "axios";
 import { baseApi } from "../utils/instance";
 import { ISignupForm, ILoginForm } from "../../interfaces/accountForm";
 import SignUpForm from "../../components/account/forms/signupFrom/signupForm";
+import { log } from "console";
 
-const SIGNIN_URI = "/mytown/v1/auth/signin";
-const SIGNUP_URI = "/mytown/v1/auth/signup";
-const NICKNAMECHECK_URI = "/mytown/v1/auth/checkNickname";
+const SIGNIN_URI = "/auth/signin";
+const SIGNUP_URI = "/auth/signup";
+const NICKNAMECHECK_URI = "/auth/checkNickname";
+const LOGINUSER_URI = "/auth/loginUserInfo";
 
 export const loginPost = (loginForm: ILoginForm) =>
   baseApi
@@ -16,10 +18,7 @@ export const loginPost = (loginForm: ILoginForm) =>
     .then((response) => response.data)
     .then((response) => {
       if (response.token) {
-        localStorage.setItem("token", response.token);
-        localStorage.setItem("email", response.email);
-        localStorage.setItem("role", response.role);
-        localStorage.setItem("nickname", response.nickname);
+        localStorage.setItem("Authorization", response.token);
       }
     });
 
@@ -39,4 +38,11 @@ export const nicknameCheckPost = (username: string) =>
 export const emailCheckPost = (email: string) =>
   baseApi.post(NICKNAMECHECK_URI, {
     email: email,
+  });
+
+export const getLoggedInInfo = () =>
+  baseApi.get(LOGINUSER_URI, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("Authorization")}`,
+    },
   });
