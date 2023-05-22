@@ -25,6 +25,14 @@ function App() {
   //     console.log(axios.defaults.headers.common["Authorization"]);
   //   },
   // });
+
+  const setLoggedIn = useSetRecoilState<ILoggedInAtom>(loggedInAtom);
+  const { data } = useQuery(["loggedInInfo"], getLoggedInInfo, {
+    onSuccess: (data) => {
+      console.log(data.data);
+      setLoggedIn(data.data);
+    },
+  });
   getLoggedInInfo();
 
   return (

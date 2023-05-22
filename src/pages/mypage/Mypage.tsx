@@ -1,12 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { ILoggedInForm } from "../../interfaces/accountForm";
 import { useEffect, useState } from "react";
+import { ILoggedInAtom, loggedInAtom } from "../../atoms/loggedInAtom";
 import * as S from "./style";
+import { useRecoilValue } from "recoil";
 
-function Mypage() {
+interface IUseInfo {
+  email: string;
+  nickname: string;
+}
+
+const Mypage = () => {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState("");
-  const [email, setEmail] = useState("");
+  const loginInfo = useRecoilValue<ILoggedInAtom>(loggedInAtom);
 
   return (
     <S.Form>
@@ -19,7 +25,7 @@ function Mypage() {
           <S.ProfileImage></S.ProfileImage>
           <S.UserInfoContainer>
             <S.WelcomeWrapper>
-              <S.Nickname>{"nickname"}</S.Nickname>
+              <S.Nickname>{loginInfo.nickname}</S.Nickname>
               <S.Welcome>님 반갑습니다.</S.Welcome>
             </S.WelcomeWrapper>
             <S.InfoWord>프로필을 입력하세요.</S.InfoWord>
@@ -30,7 +36,7 @@ function Mypage() {
           </S.UserInfoContainer>
         </S.UpperDiv>
 
-        <S.Email>jeon3865@naver.com</S.Email>
+        <S.Email>{loginInfo.email}</S.Email>
         <S.UserTagWrapper>
           <S.TagDiv>
             <S.UserTag></S.UserTag>
@@ -63,6 +69,6 @@ function Mypage() {
       </S.Container>
     </S.Form>
   );
-}
+};
 
 export default Mypage;

@@ -25,13 +25,15 @@ import { useEffect } from "react";
 
 export interface ILoggedInAtom {
   loggedIn: boolean;
-  id: string;
+  email: string;
+  nickname: string;
 }
 
 export const loggedInAtom = atom<ILoggedInAtom>({
   key: "loggedIn",
   default: {
     loggedIn: false,
-    id: "12",
+    email: "abc@naver.com",
+    nickname: "a",
   },
 });
