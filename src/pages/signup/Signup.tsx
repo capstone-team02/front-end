@@ -1,9 +1,16 @@
 import * as S from "./style";
+//import * as M from "../../components/account/forms/style";
 import { useForm } from "react-hook-form";
 import { ISignupForm } from "../../interfaces/accountForm";
-import { emailCheckPost ,nicknameCheckPost ,signupPost } from "../../apis/api/accountApi";
+import {
+  emailCheckPost,
+  nicknameCheckPost,
+  signupPost,
+} from "../../apis/api/accountApi";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
+import useOpenModal from "../../hooks/useOpenModal";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -40,7 +47,7 @@ function SignUp() {
         console.log(res.data);
       });
       console.log("success");
-      
+
       setValidNickname(true);
       setNicknameChecked(true);
     } catch (error) {
@@ -59,7 +66,7 @@ function SignUp() {
         console.log(res.data);
       });
       console.log("success");
-      
+
       setValidEmail(true);
       setEmailChecked(true);
     } catch (error) {
@@ -69,6 +76,11 @@ function SignUp() {
     }
   };
 
+  const [isOpenModal, setOpenModal] = useState<boolean>(false);
+
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal);
+  }, [isOpenModal]);
 
   const onValid = async (data: ISignupForm) => {
     console.log("!");
@@ -82,7 +94,7 @@ function SignUp() {
           email: data.email,
           password: data.password,
           isFemale: data.isFemale,
-        }).then(() => navigate("success"));
+        }).then(onClickToggleModal);
       } catch (error) {
         console.log(error);
       }
@@ -101,48 +113,48 @@ function SignUp() {
             <S.optText>사전 정보</S.optText>
           </S.opt2>
         </S.optionDiv>
-        
-          <S.IsFemaleContainer>
+
+        <S.IsFemaleContainer>
           <S.Label>성별</S.Label>
 
           <S.ChooseWrapper>
-          <S.IsFemaleText>여자</S.IsFemaleText>
-          <S.Radio 
-            value = {'true'}
-            id = {'isFemale'}
-            type="radio"
-            {...register("isFemale")}
-          ></S.Radio>
-          <S.IsFemaleText>남자</S.IsFemaleText>
-          <S.Radio 
-            value = {'false'}
-            id = {'isFemale'}
-            type="radio"
-            {...register("isFemale")}
-          ></S.Radio>
+            <S.IsFemaleText>여자</S.IsFemaleText>
+            <S.Radio
+              value={"true"}
+              id={"isFemale"}
+              type="radio"
+              {...register("isFemale")}
+            ></S.Radio>
+            <S.IsFemaleText>남자</S.IsFemaleText>
+            <S.Radio
+              value={"false"}
+              id={"isFemale"}
+              type="radio"
+              {...register("isFemale")}
+            ></S.Radio>
           </S.ChooseWrapper>
-      
-          </S.IsFemaleContainer>
-          <S.NameWrapper>
+        </S.IsFemaleContainer>
+        <S.NameWrapper>
           <S.Label>닉네임</S.Label>
-          
           <S.InputSubmitWrapper>
-          <S.HalfInput
-            {...register("nickname", {
-              required: "닉네임을 입력해주세요.",
-              pattern: {
-                value: /^[가-힣a-zA-Z]+$/,
-                message: "올바르지 않은 닉네임 형식입니다.",
-              },
-              onChange: (e) => {
-                setNicknameChecked(false);
-                trigger("nickname");
-              },
-              validate: (v) => nicknameChecked === true,
-            })}
-            type="text"
-          />
-            <S.HalfSubmitForNickname onClick={handleNicknameCheck}><S.SubmitText>중복 확인</S.SubmitText></S.HalfSubmitForNickname>
+            <S.HalfInput
+              {...register("nickname", {
+                required: "닉네임을 입력해주세요.",
+                pattern: {
+                  value: /^[가-힣a-zA-Z]+$/,
+                  message: "올바르지 않은 닉네임 형식입니다.",
+                },
+                onChange: (e) => {
+                  setNicknameChecked(false);
+                  trigger("nickname");
+                },
+                validate: (v) => nicknameChecked === true,
+              })}
+              type="text"
+            />
+            <S.HalfSubmitForNickname onClick={handleNicknameCheck}>
+              <S.SubmitText>중복 확인</S.SubmitText>
+            </S.HalfSubmitForNickname>
           </S.InputSubmitWrapper>
           {dirtyFields.nickname ? (
             errors?.nickname?.message ? (
@@ -156,47 +168,42 @@ function SignUp() {
             ) : (
               <S.ErrorMessage>중복검사 해주세요.</S.ErrorMessage>
             )
-          ) : (
-           null
-          )}
+          ) : null}
         </S.NameWrapper>
 
         <S.EmailWrapper>
           <S.Label>이메일</S.Label>
           <S.EmailInputWrapper>
-          <S.InputSubmitWrapper>
-            <S.Input
-              {...register("email", {
-                required: "이메일을 입력해주세요.",
-                pattern: {
-                  value: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/,
-                  message: "올바르지 않은 이메일 형식입니다.",
-                },
-              })}
-              type="text"
-            /> 
-            <S.HalfSubmitForEmail onClick={handleEmailCheck}><S.SubmitText>중복 확인</S.SubmitText></S.HalfSubmitForEmail>
-            
-          </S.InputSubmitWrapper>
-          {dirtyFields.email ? ( 
-            errors?.email?.message ? (
-              <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
-            ) : emailChecked ? (
-              validEmail ? (
-                <S.CheckedMessage>사용 가능한 이메일입니다.</S.CheckedMessage>
+            <S.InputSubmitWrapper>
+              <S.Input
+                {...register("email", {
+                  required: "이메일을 입력해주세요.",
+                  pattern: {
+                    value: /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/,
+                    message: "올바르지 않은 이메일 형식입니다.",
+                  },
+                })}
+                type="text"
+              />
+              <S.HalfSubmitForEmail onClick={handleEmailCheck}>
+                <S.SubmitText>중복 확인</S.SubmitText>
+              </S.HalfSubmitForEmail>
+            </S.InputSubmitWrapper>
+            {dirtyFields.email ? (
+              errors?.email?.message ? (
+                <S.ErrorMessage>{errors.email?.message}</S.ErrorMessage>
+              ) : emailChecked ? (
+                validEmail ? (
+                  <S.CheckedMessage>사용 가능한 이메일입니다.</S.CheckedMessage>
+                ) : (
+                  <S.ErrorMessage>사용중인 이메일입니다.</S.ErrorMessage>
+                )
               ) : (
-                <S.ErrorMessage>사용중인 이메일입니다.</S.ErrorMessage>
+                <S.ErrorMessage>중복검사 해주세요.</S.ErrorMessage>
               )
-            ) : (
-              <S.ErrorMessage>중복검사 해주세요.</S.ErrorMessage>
-            )
-          ) : (
-           null
-          )}
+            ) : null}
           </S.EmailInputWrapper>
-          
         </S.EmailWrapper>
-        
 
         <S.PasswordWrapper>
           <S.Label>비밀번호</S.Label>
@@ -216,13 +223,13 @@ function SignUp() {
           />
           {dirtyFields.password ? (
             <S.ErrorMessage>{errors?.password?.message}</S.ErrorMessage>
-          ) : ( 
+          ) : (
             <S.Notice>
               숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!
             </S.Notice>
           )}
-          </S.PasswordWrapper>
-          <S.VerifyPasswordWrapper>
+        </S.PasswordWrapper>
+        <S.VerifyPasswordWrapper>
           <S.Label>비밀번호 확인</S.Label>
 
           <S.Input
@@ -245,8 +252,14 @@ function SignUp() {
           )}
         </S.VerifyPasswordWrapper>
         <S.Bar></S.Bar>
-        <S.SignUpBtn><S.SignUpTxt>다음단계</S.SignUpTxt></S.SignUpBtn>
-        {}
+        <S.SignUpBtn>
+          <S.SignUpTxt>다음단계</S.SignUpTxt>
+        </S.SignUpBtn>
+        {isOpenModal && (
+          <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
+            아아
+          </LoginSuccessModal>
+        )}
       </S.Form>
     </S.FormContainer>
   );

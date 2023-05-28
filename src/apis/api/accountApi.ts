@@ -1,7 +1,6 @@
 import axios from "axios";
 import { baseApi } from "../utils/instance";
 import { ISignupForm, ILoginForm } from "../../interfaces/accountForm";
-import SignUpForm from "../../components/account/forms/signupFrom/signupForm";
 import { log } from "console";
 
 const SIGNIN_URI = "/auth/signin";
@@ -26,7 +25,7 @@ export const signupPost = (signupForm: ISignupForm) =>
   baseApi.post(SIGNUP_URI, {
     email: signupForm.email,
     password: signupForm.password,
-    username: signupForm.nickname,
+    nickname: signupForm.nickname,
     isFemale: signupForm.isFemale,
   });
 
