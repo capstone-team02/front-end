@@ -10,7 +10,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
-import useOpenModal from "../../hooks/useOpenModal";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -76,12 +75,6 @@ function SignUp() {
     }
   };
 
-  const [isOpenModal, setOpenModal] = useState<boolean>(false);
-
-  const onClickToggleModal = useCallback(() => {
-    setOpenModal(!isOpenModal);
-  }, [isOpenModal]);
-
   const onValid = async (data: ISignupForm) => {
     console.log("!");
     if (data.password !== data.verifyPassword) {
@@ -94,7 +87,7 @@ function SignUp() {
           email: data.email,
           password: data.password,
           isFemale: data.isFemale,
-        }).then(onClickToggleModal);
+        }).then(() => navigate("/survey"));
       } catch (error) {
         console.log(error);
       }
@@ -255,11 +248,7 @@ function SignUp() {
         <S.SignUpBtn>
           <S.SignUpTxt>다음단계</S.SignUpTxt>
         </S.SignUpBtn>
-        {isOpenModal && (
-          <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
-            아아
-          </LoginSuccessModal>
-        )}
+        {}
       </S.Form>
     </S.FormContainer>
   );
