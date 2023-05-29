@@ -12,35 +12,28 @@ export const ModalContainer = styled.div`
   padding: 80px 0px;
   gap: 54px;
 
-  position: absolute;
+  position: relative;
   width: 670px;
   height: 854px;
-  left: calc(50% - 670px / 2);
-  top: 100px;
+
+  background: #ffffff;
+  border: 1px solid #868686;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const ModalWrap = styled.div`
-  width: 670px;
-  height: 854px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
-  box-sizing: border-box;
-  background-color: white;
-  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
 `;
 
 //뒷배경을 어둡게 만들어주는
 export const ModalBackGround = styled.div`
-  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
 
 export default styled;
