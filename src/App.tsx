@@ -8,6 +8,7 @@ import { ILoggedInAtom, loggedInAtom } from "./atoms/loggedInAtom";
 import { getLoggedInInfo } from "./apis/api/accountApi";
 import { useEffect } from "react";
 import axios from "axios";
+import Start from "./pages/start/StartPage";
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
