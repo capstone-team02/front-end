@@ -75,6 +75,18 @@ function Survey() {
     }
   };
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const onClickToggleDropDown = useCallback(() => {
+    console.log(!isOpen);
+    setIsOpen(!isOpen);
+  }, [isOpen]);
+
+  const onOptionClicked = (value: string, index: number) => () => {
+    console.log(value);
+    setIsOpen(false);
+  };
+
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
   const onClickToggleModal = useCallback(() => {
@@ -113,14 +125,47 @@ function Survey() {
         </S.opt2>
       </S.optionDiv>
       <S.Form onSubmit={handleSubmit(onValid)}></S.Form>
-      <S.Wrapper1>
+      <S.AgeWrapper>
         <S.Label>나이</S.Label>
         <S.Input></S.Input>
-      </S.Wrapper1>
-      <S.Wrapper1>
+      </S.AgeWrapper>
+      <S.TownContainer>
         <S.Label>살고 있는 동네</S.Label>
-      </S.Wrapper1>
-      <S.Wrapper2>
+        <S.TownWrapper>
+          <S.DropDownContainer>
+            <S.DistrictDefault onClick={onClickToggleDropDown}>
+              구<S.Arrow>{">"}</S.Arrow>
+            </S.DistrictDefault>
+
+            {isOpen && (
+              <>
+                <S.DropDownWrapper>
+                  <S.ListItem onClick={onOptionClicked("발라드", 1)}>
+                    발라드
+                  </S.ListItem>
+                </S.DropDownWrapper>
+              </>
+            )}
+          </S.DropDownContainer>
+          <S.DropDownContainer2>
+            <S.DistrictDefault onClick={onClickToggleDropDown}>
+              동<S.Arrow>{">"}</S.Arrow>
+            </S.DistrictDefault>
+
+            {isOpen && (
+              <>
+                <S.DropDownWrapper>
+                  <S.ListItem onClick={onOptionClicked("발라드", 1)}>
+                    발라드
+                  </S.ListItem>
+                </S.DropDownWrapper>
+              </>
+            )}
+          </S.DropDownContainer2>
+        </S.TownWrapper>
+      </S.TownContainer>
+
+      {/* <S.Wrapper2>
         <S.Label>분위기</S.Label>
       </S.Wrapper2>
       <S.Wrapper2>
@@ -135,7 +180,7 @@ function Survey() {
       <S.Wrapper4>
         <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>
         <S.ReviewInput></S.ReviewInput>
-      </S.Wrapper4>
+      </S.Wrapper4> */}
       {isOpenModal && (
         <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
           <S.Ment1>회원가입 완료 </S.Ment1>
