@@ -7,9 +7,12 @@ import {
   nicknameCheckPost,
   signupPost,
 } from "../../apis/api/accountApi";
+import { districtGet, guNameGet } from "../../apis/api/surveyApi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
+import { IDistrcitForm } from "../../interfaces/districtForm";
+import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDropDown";
 
 function Survey() {
   const navigate = useNavigate();
@@ -36,6 +39,17 @@ function Survey() {
   } = useForm<ISignupForm>({
     defaultValues: signupForm,
   });
+  const [districts, setDistricts] = useState<IDistrcitForm>({
+    guName: "",
+    districtName: "",
+  });
+  // // const [districts, setDistricts] = useState<false>();
+  // useEffect(() => {
+  //   districtGet().then((response) => {
+  //     //console.log(response);
+  //     setDistricts(response);
+  //   });
+  // }, []);
 
   const handleNicknameCheck = async () => {
     const nickname = getValues("nickname");
@@ -74,18 +88,7 @@ function Survey() {
       console.log(error);
     }
   };
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const onClickToggleDropDown = useCallback(() => {
-    console.log(!isOpen);
-    setIsOpen(!isOpen);
-  }, [isOpen]);
-
-  const onOptionClicked = (value: string, index: number) => () => {
-    console.log(value);
-    setIsOpen(false);
-  };
+  //const { allDistricts } = useDistrict();
 
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
@@ -132,40 +135,10 @@ function Survey() {
       <S.TownContainer>
         <S.Label>살고 있는 동네</S.Label>
         <S.TownWrapper>
-          <S.DropDownContainer>
-            <S.DistrictDefault onClick={onClickToggleDropDown}>
-              구<S.Arrow>{">"}</S.Arrow>
-            </S.DistrictDefault>
-
-            {isOpen && (
-              <>
-                <S.DropDownWrapper>
-                  <S.ListItem onClick={onOptionClicked("발라드", 1)}>
-                    발라드
-                  </S.ListItem>
-                </S.DropDownWrapper>
-              </>
-            )}
-          </S.DropDownContainer>
-          <S.DropDownContainer2>
-            <S.DistrictDefault onClick={onClickToggleDropDown}>
-              동<S.Arrow>{">"}</S.Arrow>
-            </S.DistrictDefault>
-
-            {isOpen && (
-              <>
-                <S.DropDownWrapper>
-                  <S.ListItem onClick={onOptionClicked("발라드", 1)}>
-                    발라드
-                  </S.ListItem>
-                </S.DropDownWrapper>
-              </>
-            )}
-          </S.DropDownContainer2>
+          <GuDropDown></GuDropDown>
         </S.TownWrapper>
       </S.TownContainer>
-
-      {/* <S.Wrapper2>
+      <S.Wrapper2>
         <S.Label>분위기</S.Label>
       </S.Wrapper2>
       <S.Wrapper2>
@@ -180,7 +153,7 @@ function Survey() {
       <S.Wrapper4>
         <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>
         <S.ReviewInput></S.ReviewInput>
-      </S.Wrapper4> */}
+      </S.Wrapper4>
       {isOpenModal && (
         <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
           <S.Ment1>회원가입 완료 </S.Ment1>

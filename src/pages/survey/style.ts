@@ -5,7 +5,6 @@ export const FormContainer = styled.div`
   height: 100%;
   min-height: 740px;
   justify-content: center;
-  position: absolute;
 `;
 
 export const Form = styled.form`
@@ -14,7 +13,6 @@ export const Form = styled.form`
   margin-left: 80px;
   margin-top: 15px;
   align-items: center;
-  position: relative;
 `;
 
 export const Title = styled.div`
@@ -96,10 +94,9 @@ export const AgeWrapper = styled.div`
   align-items: flex-start;
   padding: 0px;
   gap: 14px;
-  position: absolute;
   width: 180px;
   height: 95px;
-  //margin-top: 32px;
+  margin-top: 32px;
 
   top: 170px;
 `;
@@ -119,27 +116,12 @@ export const TownContainer = styled.div`
   align-items: flex-start;
   padding: 0px;
   gap: 14px;
-  position: absolute;
   width: 417px;
-  height: 55px;
-  top: 310px;
+  height: 100%;
+  margin-top: 32px;
 `;
 
-export const DropDownContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 180px;
-  height: 100%;
-`;
-export const DropDownContainer2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 180px;
-  height: 100%;
-  left: 210px;
-`;
+
 
 export const Wrapper2 = styled.div`
   display: flex;
@@ -147,7 +129,6 @@ export const Wrapper2 = styled.div`
   align-items: flex-start;
   padding: 0px;
   gap: 18px;
-  position: absolute;
 
   width: 570px;
   height: 145px;
@@ -158,51 +139,41 @@ export const Wrapper3 = styled.div`
   width: 240px;
   height: 93px;
   margin-top: 32px;
-  position: absolute;
 `;
 
 export const Wrapper4 = styled.div`
   width: 422px;
   height: 140px;
   margin-top: 32px;
-  position: absolute;
 `;
 
-export const DistrictDefault = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 16px 10px 16px 30px;
-  gap: 80px;
 
-  width: 140px;
-  height: 24px;
-
-  background: #ffffff;
-  border: 1px solid #8a8a8a;
-  border-radius: 10px;
-  color: #4b4b4b;
-`;
-export const DropDownWrapper = styled.div`
+export const DropDownWrapper = styled.ul`
   display: flex;
   flex-direction: column;
-  position: absolute;
-  width: 180px;
+  width: 170px;
   height: 192px;
-  top: 60px;
+  top: 390px;
+  margin-top: 7px;
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 10px;
+  position: absolute;
+  padding-inline-start: 10px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
-export const DropDownWrapper2 = styled.div`
+export const DropDownWrapper2 = styled.ul`
   display: flex;
   flex-direction: column;
-  position: absolute;
   width: 180px;
   height: 190px;
   left: 210px;
   margin-top: 7px;
+  position: absolute;
 `;
 // export const DropDownContainer = styled.ul`
 //   display: flex;
@@ -239,19 +210,7 @@ export const ReviewInput = styled.input`
   border-radius: 10px;
 `;
 
-export const Arrow = styled.a`
-  display: flex;
-  justify-content: right;
-  align-items: right;
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 25px;
-  line-height: 18px;
-  color: #4b4b4b;
-  transform: rotate(90deg);
-  margin-left: auto;
-`;
+
 
 export const DropDownBoxWrap = styled.div`
   height: 152px;
@@ -261,8 +220,8 @@ export const DropDownBoxWrap = styled.div`
 
 export const ListItem = styled.li`
   display: flex;
-  justify-content: left;
-  align-items: left;
+  // justify-content: left;
+  // align-items: left;
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
