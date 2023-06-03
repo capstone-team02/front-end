@@ -10,26 +10,27 @@ export const FormContainer = styled.div`
 export const Form = styled.form`
   width: 555px;
   height: 610px;
-  margin-top : 159px;
+  margin-top: 159px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const LogoText1 = styled.h1`
-display:flex;
-font-family:'gosanja';
-font-style: normal;
-font-weight: 300;
-font-size: 15px;
-color: #000000;
-`
+  display: flex;
+  font-family: "gosanja";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000000;
+`;
 export const LogoText2 = styled.h1`
-display:flex;
-font-family:'gosanja';
-font-weight: 1000;
-font-size: 60px;
-color: #000000;`;
+  display: flex;
+  font-family: "gosanja";
+  font-weight: 1000;
+  font-size: 60px;
+  color: #000000;
+`;
 
 export const Logo = styled.div`
   display: flex;
@@ -38,7 +39,6 @@ export const Logo = styled.div`
   width: 310px;
   height: 143px;
   left: 565px;
-
 `;
 
 export const LoginWrapper = styled.div`
@@ -49,7 +49,7 @@ export const LoginWrapper = styled.div`
   width: 555px;
   height: 155px;
   left: 442.5px;
-  margin-top :105px;
+  margin-top: 105px;
 `;
 export const IdWrapper = styled.div`
   align-items: center;
@@ -70,7 +70,6 @@ export const PasswordWrapper = styled.div`
   margin-top: 15px;
 `;
 
-
 export const Input = styled.input`
   box-sizing: border-box;
 
@@ -80,15 +79,17 @@ export const Input = styled.input`
   left: 115px;
   top: -0.25px;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  padding-left :15px;
+  padding-left: 15px;
   background: #ffffff;
   border: 1px solid #000000;
   border-radius: 20px;
+  cursor: text;
+  
 `;
 
 export const Label = styled.label`
@@ -107,18 +108,18 @@ export const Label = styled.label`
   color: #000000;
 `;
 export const SubmitFail = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-padding-left: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30px;
 
-width: 400px;
-height: 27px;
-top: 605px;
+  width: 400px;
+  height: 27px;
+  top: 605px;
 
   font-family: "Pretendard";
   font-weight: 500;
-  margin-left:60px;
+  margin-left: 60px;
   margin-top: 10px;
   font-size: 13px;
 `;
@@ -154,44 +155,39 @@ export const LoginText = styled.a`
   color: #ffffff;
 `;
 export const FindIdPasswordSignUp = styled.div`
-
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 700;
-font-size: 14px;
-line-height: 17px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
 `;
 
 export const Options = styled.div`
-display: flex;
-flex-direction: row;
-align-items: center;
-margin-left:20px;
-width: 350px;
-height: 27px;
-top: 605px;
-margin-top:20px;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+  width: 350px;
+  height: 27px;
+  top: 605px;
+  margin-top: 20px;
 `;
-
 
 export const FindId = styled.span`
-font-family: "Pretendard";
-font-weight: 600;
-font-size: 14px;
-cursor: pointer;
-margin-right: 20px;
-margin-left:10px;
-
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 10px;
 `;
 export const FindPassword = styled.span`
-font-family: "Pretendard";
-font-weight: 600;
-font-size: 14px;
-cursor: pointer;
-margin-left: 20px;
-margin-right: 20px;
-
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
 `;
 
 export const RegisterDiv = styled.div`
@@ -210,8 +206,4 @@ export const Register = styled.span`
   font-size: 14px;
   cursor: pointer;
   margin-left: 20px;
-  `;
-
-
-
-
+`;
