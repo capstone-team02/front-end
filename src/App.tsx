@@ -26,6 +26,12 @@ function App() {
   //     console.log(axios.defaults.headers.common["Authorization"]);
   //   },
   // });
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src =
+    "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=y20qex6myf";
+  document.head.appendChild(script);
+
 
   const setLoggedIn = useSetRecoilState<ILoggedInAtom>(loggedInAtom);
   const { data } = useQuery(["loggedInInfo"], getLoggedInInfo, {
@@ -34,12 +40,12 @@ function App() {
       setLoggedIn(data.data);
     },
   });
+
   getLoggedInInfo();
 
   return (
     <Wrapper>
-      <GlobalStyles></GlobalStyles>
-      <Outlet />
+      <GlobalStyles></GlobalStyles> <Outlet />
     </Wrapper>
   );
 }

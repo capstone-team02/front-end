@@ -16,5 +16,10 @@ body{
     padding:0px;
     box-sizing: border-box;
 }
+
+head{
+    type="text/javascript"
+    src="http://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=y20qex6myf"
+}
 `;
 export default GlobalStyles;

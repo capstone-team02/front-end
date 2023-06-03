@@ -92,6 +92,7 @@ const router = createBrowserRouter([
       },
       {
         path: "map",
+
         //element: <Mypage />,
         children: [
           {

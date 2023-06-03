@@ -4,8 +4,22 @@ export const Container = styled.div`
   height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
+
   position: fixed;
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100vw%;
+  height: 100%;
+`;
+
+export const Map = styled.div`
+  height: 100%;
+  width: 70%;
+`;
+
 export const Banner = styled.div`
   width: 100vw;
   height: 70px;
@@ -24,13 +38,16 @@ export const Banner = styled.div`
 `;
 
 export const InfoBox = styled.div`
-  width: 550px;
+  width: 30%;
   height: 100%;
   background: #ffffff;
   border: 1px solid #000000;
   border-top: 0px;
   padding: 43px 58.5px 72px 58.5px;
   overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
   margin-bottom: 72px;
 `;
 
@@ -176,7 +193,7 @@ export const BuDongSanBox = styled.div`
   padding: 15px 14px;
   gap: 35px;
 
-  width: 101px;
+  width: 133px;
   height: 184px;
 
   background: #ffffff;
