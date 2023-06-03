@@ -121,8 +121,6 @@ export const TownContainer = styled.div`
   margin-top: 32px;
 `;
 
-
-
 export const Wrapper2 = styled.div`
   display: flex;
   flex-direction: column;
@@ -146,7 +144,6 @@ export const Wrapper4 = styled.div`
   height: 140px;
   margin-top: 32px;
 `;
-
 
 export const DropDownWrapper = styled.ul`
   display: flex;
@@ -209,8 +206,6 @@ export const ReviewInput = styled.input`
   border: 0.5px solid #808080;
   border-radius: 10px;
 `;
-
-
 
 export const DropDownBoxWrap = styled.div`
   height: 152px;
@@ -293,6 +288,7 @@ export const HalfSubmitForEmail = styled.button`
   background: #ededed;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const HalfSubmitForNickname = styled.button`
@@ -305,6 +301,7 @@ export const HalfSubmitForNickname = styled.button`
   background: #ededed;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 `;
 export const HalfInput = styled.input`
   margin-top: 10px;
@@ -355,6 +352,7 @@ export const SignUpBtn = styled.button`
   margin-left: 228.5px;
   background: #000000;
   border-radius: 20px;
+  cursor: pointer;
 `;
 export const SignUpTxt = styled.a`
   width: 83px;
@@ -436,4 +434,5 @@ export const SuccessBtn = styled.button`
   align-items: center;
 
   color: #ffffff;
+  cursor: pointer;
 `;

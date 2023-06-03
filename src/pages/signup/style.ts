@@ -86,6 +86,7 @@ export const Radio = styled.input`
   width: 15px;
   height: 15px;
   margin-right: 15px;
+  cursor: pointer;
 `;
 
 export const IsFemaleContainer = styled.div`
@@ -135,6 +136,7 @@ export const HalfSubmitForEmail = styled.button`
   background: #ededed;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const HalfSubmitForNickname = styled.button`
@@ -147,6 +149,7 @@ export const HalfSubmitForNickname = styled.button`
   background: #ededed;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 `;
 export const HalfInput = styled.input`
   margin-top: 10px;
@@ -161,6 +164,7 @@ export const HalfInput = styled.input`
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 20px;
+  cursor: text;
 `;
 
 export const SubmitText = styled.a`
@@ -226,6 +230,7 @@ export const SignUpBtn = styled.button`
   margin-left: 228.5px;
   background: #000000;
   border-radius: 20px;
+  cursor: pointer;
 `;
 export const SignUpTxt = styled.a`
   width: 83px;
@@ -249,6 +254,7 @@ export const Input = styled.input`
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 20px;
+  cursor: text;
 `;
 
 export const Label = styled.label`

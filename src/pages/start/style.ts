@@ -29,6 +29,7 @@ export const StartBtn = styled.button`
   background: #000000;
   border-radius: 20px;
   transform: translate(-50%, -80%);
+  cursor: pointer;
 `;
 
 export const BtnText = styled.a`

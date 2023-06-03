@@ -146,6 +146,7 @@ export const InfoButton = styled.button`
   font-size: 18px;
   line-height: 22px;
   /* identical to box height */
+  cursor: pointer;
 `;
 
 export const Email = styled.div`
@@ -234,6 +235,7 @@ export const ChangeInfo = styled.button`
   background: #e6e6e6;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
 `;
 
 export const MyActivity = styled.a`
@@ -280,6 +282,7 @@ export const MyActivityButton = styled.button`
   border: none;
   border-bottom: 0.5px solid #6c6c6c;
   background: #ffffff;
+  cursor: pointer;
 `;
 
 export const Arrow = styled.a`
