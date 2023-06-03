@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import Survey from "./pages/survey/Survey";
 import Start from "./pages/start/StartPage";
 import Main from "./pages/main/Main";
+import Map from "./pages/map/Map";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,20 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <Main />,
+          },
+          // {
+          //   path: "success",
+          //   element: <SignUpSuccess />,
+          // },
+        ],
+      },
+      {
+        path: "map",
+        //element: <Mypage />,
+        children: [
+          {
+            path: "",
+            element: <Map />,
           },
           // {
           //   path: "success",
