@@ -38,7 +38,7 @@ export const Banner = styled.div`
 `;
 
 export const InfoBox = styled.div`
-  width: 30%;
+  width: 25%;
   height: 100%;
   background: #ffffff;
   border: 1px solid #000000;
@@ -134,7 +134,6 @@ export const ReviewContainer = styled.div`
   flex-direction: column;
 `;
 export const LabelContainer = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: row;
 `;
@@ -147,14 +146,15 @@ export const MoreText = styled.button`
   line-height: 17px;
   /* identical to box height */
   margin-left: auto;
-  margin-top: 21px;
+  //margin-top: 10px;
   color: #bbd145;
   background: white;
   border: none;
   cursor: pointer;
 `;
 export const ReviewWrapper = styled.div`
-  height: 300px;
+  margin-top: 20px;
+  height: 335px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -193,7 +193,7 @@ export const BuDongSanBox = styled.div`
   padding: 15px 14px;
   gap: 35px;
 
-  width: 133px;
+  width: 110px;
   height: 184px;
 
   background: #ffffff;
