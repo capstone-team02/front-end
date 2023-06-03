@@ -50,7 +50,7 @@ function GuDropDown() {
       try {
         const response = await districtGet();
         const res = await guNameGet();
-        console.log(res.data);
+        console.log(response.data);
         setGuName(res.data);
         setDistricts(response.data);
 
@@ -100,9 +100,15 @@ function GuDropDown() {
         {isOpenDong && (
           <>
             <S.DropDownWrapper>
-              <S.ListItem onClick={onOptiongClickedDong("발라드", 1)}>
-                발라드
-              </S.ListItem>
+              {districts.map((district) => (
+                <S.ListItem
+                  key={guSelect}
+                  value={district.dongName}
+                  onClick={() => onSelect(district.dongName)}
+                >
+                  {district.dongName}
+                </S.ListItem>
+              ))}
             </S.DropDownWrapper>
           </>
         )}

@@ -161,7 +161,7 @@ function Survey() {
           <S.Ment2>자유롭게 이용하면서</S.Ment2>
           <S.Ment2>나만의 도시를찾아보세요</S.Ment2>
           <S.SuccessIcon
-            src={require("../../imgs/loginSuccessIcon.png")}
+            src={require("../../imgs/icon/loginSuccessIcon.png")}
           ></S.SuccessIcon>
           <S.Line></S.Line>
           <S.SuccessBtn onClick={(onClickToggleModal) => navigate("/")}>
