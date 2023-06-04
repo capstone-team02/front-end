@@ -13,7 +13,6 @@ export const UpperContainer = styled.div`
 export const MypageIcon = styled.img`
   width: 60px;
   height: 60px;
-  margin-top: 30px;
 `;
 
 export const Search = styled.button`
@@ -41,6 +40,15 @@ export const FilteringIcon = styled.img`
   float: left;
 `;
 
+export const MypageIconBtn = styled.button`
+  width: 60px;
+  height: 60px;
+  border: none;
+  background: white;
+  margin-top: 30px;
+  cursor: pointer;
+`;
+
 export const SearchIconBtn = styled.button`
   width: 210px;
   height: 120px;
@@ -62,6 +70,7 @@ export const MapIconBtn = styled.button`
   background: #ffffff;
   border: 0.5px solid #616161;
   border-radius: 20px;
+  cursor: pointer;
 `;
 
 export const MapIconImg = styled.img`

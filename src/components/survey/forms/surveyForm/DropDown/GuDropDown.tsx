@@ -32,26 +32,35 @@ function GuDropDown() {
   const [districts, setDistricts] = useState<any[]>([]);
 
   const [guName, setGuName] = useState([]);
+  const [dongName, setDongName] = useState<any[]>([]);
   //   const [districts, setDistricts] = useState({
   //     guName: "",
   //     dongName: "",
   //   });
   const [loading, setLoading] = useState(false);
   const [guSelect, setGuSelect] = useState("구");
-  //const onSelect = useCallback(guSelect => setGuSelect(guSelect), []);
-  const onSelect = useCallback((guSelect: React.SetStateAction<string>) => {
+  const [dongSelect, setDongSelect] = useState("동");
+
+  const onSelectGu = useCallback((guSelect: React.SetStateAction<string>) => {
     setGuSelect(guSelect);
     console.log("guSelect" + guSelect);
-    setIsOpenGu(!isOpenGu);
   }, []);
+
+  const onSelectDong = useCallback(
+    (dongSelect: React.SetStateAction<string>) => {
+      setDongSelect(dongSelect);
+      console.log("dongSelect" + guSelect);
+    },
+    []
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await districtGet();
-        const res = await guNameGet();
+
         console.log(response.data);
-        setGuName(res.data);
         setDistricts(response.data);
 
         //setDistricts(response.data.guName, response.data.)
@@ -65,14 +74,6 @@ function GuDropDown() {
     fetchData();
   }, []);
 
-  //   if (!districtNames) {
-  //     return null;
-  //   }
-
-  //   for(const [key,values] of mapArrays){
-  //     console.log(`KEY: ${key}, VALUE: ${values}`);
-  //   }
-
   return (
     <>
       <S.DropDownContainer>
@@ -83,9 +84,17 @@ function GuDropDown() {
         {isOpenGu && (
           <>
             <S.DropDownWrapper>
-              {guName.map((name) => (
-                <S.ListItem key={name} onClick={() => onSelect(name)}>
-                  {name}
+              {districts.map((name) => (
+                <S.ListItem
+                  key={name.guName}
+                  onClick={() => {
+                    onSelectGu(name.guName);
+                    setIsOpenGu(!isOpenGu);
+                    setDongName(name.dongName);
+                    console.log(name.dongName);
+                  }}
+                >
+                  {name.guName}
                 </S.ListItem>
               ))}
             </S.DropDownWrapper>
@@ -94,19 +103,22 @@ function GuDropDown() {
       </S.DropDownContainer>
       <S.DropDownContainer2>
         <S.DistrictDefault onClick={onClickToggleDropDownDong}>
-          동<S.Arrow>{">"}</S.Arrow>
+          {dongSelect}
+          <S.Arrow>{">"}</S.Arrow>
         </S.DistrictDefault>
-
         {isOpenDong && (
           <>
             <S.DropDownWrapper>
-              {districts.map((district) => (
+              {dongName.map((dong) => (
                 <S.ListItem
                   key={guSelect}
-                  value={district.dongName}
-                  onClick={() => onSelect(district.dongName)}
+                  onClick={() => {
+                    onSelectDong(dong);
+                    setIsOpenDong(!isOpenDong);
+                    console.log(dong);
+                  }}
                 >
-                  {district.dongName}
+                  {dong}
                 </S.ListItem>
               ))}
             </S.DropDownWrapper>

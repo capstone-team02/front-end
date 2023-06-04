@@ -1,5 +1,9 @@
+import {
+  budongsanDistrictPost,
+  reviewDistrictPost,
+} from "../../apis/api/mapApi";
 import * as S from "./style";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Map() {
   //   useEffect(() => {
@@ -32,8 +36,6 @@ function Map() {
   const mapElement = useRef(null);
 
   useEffect(() => {
-   
-
     const { naver } = window;
     if (!mapElement.current || !naver) return;
 
@@ -54,6 +56,44 @@ function Map() {
     });
   }, []);
 
+  const onValidChangeUserInfo = async (data: string) => {
+    // 회원정보 수정 API 호출 파트
+
+    const formData = new FormData();
+    //formData.append("image", data.image[0]);
+    try {
+      const response = await budongsanDistrictPost(data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const [district, setDistrict] = useState("");
+  const [review, setReview] = useState<any[]>([]);
+  const [budongsan, setBudongsan] = useState<[]>();
+  const [keyword, setKeyword] = useState<any[]>([]);
+
+  // const getInfos = async (data: string) => {
+  //   console.log("getInfos");
+  //   console.log(data);
+  //   try {
+  //     const response = await budongsanDistrictPost(data);
+  //     console.log(response);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  useEffect(() => {
+    setDistrict("북아현동");
+    const res1 = budongsanDistrictPost(district);
+    //setBudongsan(res1.data);
+    // async function getInfos() {
+    //   const response = await budongsanDistrictPost(district);
+    //   console.log(response);
+
+    // }
+  });
   return (
     <>
       <S.Container>
@@ -79,9 +119,13 @@ function Map() {
               <S.Label>동네 키워드</S.Label>
               <S.KeywordWrapper>
                 {/* 반복문 처리할것 */}
-                <S.KeywordBox>가족</S.KeywordBox>
-                <S.KeywordBox>가족</S.KeywordBox>
-                <S.KeywordBox>가족</S.KeywordBox>
+                {/* {districts.map((name) => (
+                <S.ListItem
+                  key={name.guName}
+                  onClick={() => {
+                    onSelectGu(name.guName);
+                    setIsOpenGu(!isOpenGu);
+                  }} */}
               </S.KeywordWrapper>
               <S.KeywordWrapper>
                 <S.KeywordBox>가족</S.KeywordBox>

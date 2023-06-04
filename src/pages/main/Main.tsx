@@ -1,13 +1,20 @@
 import * as S from "./style";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+  const navigate = useNavigate();
   return (
     <>
       <S.UpperContainer>
-        <S.MypageIcon
-          src={require("../../imgs/icon/mypage_icon.png")}
-        ></S.MypageIcon>
-
+        <S.MypageIconBtn
+          onClick={() => {
+            navigate("/mypage");
+          }}
+        >
+          <S.MypageIcon
+            src={require("../../imgs/icon/mypage_icon.png")}
+          ></S.MypageIcon>
+        </S.MypageIconBtn>
         <S.Search>
           <S.FilteringIcon
             src={require("../../imgs/icon/filter_icon.png")}
@@ -19,7 +26,11 @@ function Main() {
             src={require("../../imgs/icon/search_icon2.png")}
           ></S.SearchIconImg>
         </S.SearchIconBtn>
-        <S.MapIconBtn>
+        <S.MapIconBtn
+          onClick={() => {
+            navigate("/map");
+          }}
+        >
           <S.MapIconImg
             src={require("../../imgs/icon/map_icon1.png")}
           ></S.MapIconImg>

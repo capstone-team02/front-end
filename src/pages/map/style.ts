@@ -106,6 +106,7 @@ export const KeywordWrapper = styled.div`
   justify-content: space-between;
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 `;
 
 export const KeywordBox = styled.div`

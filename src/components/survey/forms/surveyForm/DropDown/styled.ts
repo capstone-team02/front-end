@@ -64,17 +64,13 @@ export const DistrictDefault = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 16px 10px 16px 30px;
+  padding: 16px 10px 16px 16px;
   gap: 80px;
 
-  width: 140px;
-  height: 24px;
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
-  line-height: 18px;
-
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 10px;
