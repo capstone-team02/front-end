@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { advantageGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
 
-function MoodCheckBox() {
+function AdvantageCheckBox() {
   const [advantage, setAdvantage] = useState<any[]>([]);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ function MoodCheckBox() {
   );
 }
 
-export default MoodCheckBox;
+export default AdvantageCheckBox;

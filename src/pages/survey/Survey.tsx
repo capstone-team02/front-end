@@ -14,6 +14,7 @@ import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal"
 import { IDistrcitForm } from "../../interfaces/districtForm";
 import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDropDown";
 import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
+import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/AdvantageCheckbox";
 
 function Survey() {
   const navigate = useNavigate();
@@ -147,6 +148,9 @@ function Survey() {
       </S.Wrapper2>
       <S.Wrapper2>
         <S.Label>동네 장점</S.Label>
+        <S.CheckBoxWrapper>
+          <AdvantageCheckBox></AdvantageCheckBox>
+        </S.CheckBoxWrapper>
       </S.Wrapper2>
       <S.Wrapper2>
         <S.Label>동네 단점</S.Label>
