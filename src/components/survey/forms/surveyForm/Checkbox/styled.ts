@@ -6,7 +6,7 @@ export const CheckBox = styled.div`
   padding: 10px 5px;
   gap: 20px;
 
-  width: 100px;
+  width: 105px;
   height: 22px;
 
   background: #ffffff;

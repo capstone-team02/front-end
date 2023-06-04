@@ -15,6 +15,7 @@ import { IDistrcitForm } from "../../interfaces/districtForm";
 import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDropDown";
 import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/AdvantageCheckbox";
+import DisadvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/DisadvantageCheckbox";
 
 function Survey() {
   const navigate = useNavigate();
@@ -154,6 +155,9 @@ function Survey() {
       </S.Wrapper2>
       <S.Wrapper2>
         <S.Label>동네 단점</S.Label>
+        <S.CheckBoxWrapper>
+          <DisadvantageCheckBox></DisadvantageCheckBox>
+        </S.CheckBoxWrapper>
       </S.Wrapper2>
       <S.Wrapper3>
         <S.Label>우리 동네 평가하기</S.Label>

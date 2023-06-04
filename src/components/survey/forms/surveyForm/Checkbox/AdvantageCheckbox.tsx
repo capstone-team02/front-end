@@ -23,7 +23,9 @@ function AdvantageCheckBox() {
   return (
     <>
       {advantage.map((advantageName) => (
-        <S.CheckBox key={advantageName}>{advantageName.advantageKor}</S.CheckBox>
+        <S.CheckBox key={advantageName}>
+          {advantageName.advantageKor}
+        </S.CheckBox>
       ))}
     </>
   );
