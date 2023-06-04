@@ -1,10 +1,7 @@
 import * as S from "./styled";
 import { useState, useCallback, useEffect } from "react";
-import { districtGet, guNameGet } from "../../../../../apis/api/surveyApi";
+import { districtGet} from "../../../../../apis/api/surveyApi";
 import React from "react";
-import userEvent from "@testing-library/user-event";
-import { stringify } from "querystring";
-import { IDistrcitForm } from "../../../../../interfaces/districtForm";
 
 function GuDropDown() {
   const [isOpenGu, setIsOpenGu] = useState<boolean>(false);

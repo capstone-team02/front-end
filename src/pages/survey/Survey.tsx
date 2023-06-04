@@ -7,12 +7,13 @@ import {
   nicknameCheckPost,
   signupPost,
 } from "../../apis/api/accountApi";
-import { districtGet, guNameGet } from "../../apis/api/surveyApi";
+import { districtGet } from "../../apis/api/surveyApi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
 import { IDistrcitForm } from "../../interfaces/districtForm";
 import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDropDown";
+import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 
 function Survey() {
   const navigate = useNavigate();
@@ -140,6 +141,9 @@ function Survey() {
       </S.TownContainer>
       <S.Wrapper2>
         <S.Label>분위기</S.Label>
+        <S.CheckBoxWrapper>
+          <MoodCheckBox></MoodCheckBox>
+        </S.CheckBoxWrapper>
       </S.Wrapper2>
       <S.Wrapper2>
         <S.Label>동네 장점</S.Label>

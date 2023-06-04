@@ -126,7 +126,7 @@ export const Wrapper2 = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 18px;
+  gap: 4px;
 
   width: 570px;
   height: 145px;
@@ -435,4 +435,11 @@ export const SuccessBtn = styled.button`
 
   color: #ffffff;
   cursor: pointer;
+`;
+
+export const CheckBoxWrapper = styled.div`
+  width: 600px;
+  height: 102px;
+  display: flex;
+  flex-wrap: wrap;
 `;
