@@ -1,10 +1,19 @@
-import * as S from "./styled";
+import * as S from "./style";
 import { useState, useCallback, useEffect } from "react";
 import { moodGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
+import MoodCheckBoxInput from "./CheckboxInput/MoodCheckboxInput";
 
 function MoodCheckBox() {
   const [mood, setMood] = useState<any[]>([]);
+  const [selected, setSelected] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   useEffect(() => {
     console.log("useEffect");
@@ -22,8 +31,13 @@ function MoodCheckBox() {
   }, []);
   return (
     <>
-      {mood.map((moodName) => (
-        <S.CheckBox key={moodName}>{moodName.moodKor}</S.CheckBox>
+      {mood.map((moodName, index) => (
+        <MoodCheckBoxInput
+          moodValue={moodName.moodKor}
+          index={moodName.id}
+          selected={selected}
+          setSelected={setSelected}
+        />
       ))}
     </>
   );

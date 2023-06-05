@@ -1,10 +1,19 @@
-import * as S from "./styled";
+import * as S from "./style";
 import { useState, useCallback, useEffect } from "react";
 import { disadvantageGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
+import DisadvantageCheckBoxInput from "./CheckboxInput/DisadvantageCheckbox";
 
 function DisadvantageCheckBox() {
   const [disadvantage, setDisadvantage] = useState<any[]>([]);
+  const [selected, setSelected] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   useEffect(() => {
     console.log("useEffect");
@@ -22,10 +31,13 @@ function DisadvantageCheckBox() {
   }, []);
   return (
     <>
-      {disadvantage.map((disadvantageName) => (
-        <S.CheckBox key={disadvantageName}>
-          {disadvantageName.disadvantageKor}
-        </S.CheckBox>
+      {disadvantage.map((disadvantageName, index) => (
+        <DisadvantageCheckBoxInput
+          disadvantageValue={disadvantageName.disadvantageKor}
+          index={disadvantageName.id}
+          selected={selected}
+          setSelected={setSelected}
+        />
       ))}
     </>
   );

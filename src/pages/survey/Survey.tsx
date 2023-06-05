@@ -16,10 +16,11 @@ import { useEffect, useState, useCallback, SetStateAction } from "react";
 import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
 import { IDistrcitForm } from "../../interfaces/districtForm";
 import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDropDown";
-import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/AdvantageCheckbox";
+import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import DisadvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/DisadvantageCheckbox";
 import StarDropDown from "../../components/survey/forms/surveyForm/DropDown/StarDropDown";
+import DisadvantageCheckBoxInput from "../../components/survey/forms/surveyForm/Checkbox/CheckboxInput/DisadvantageCheckbox";
 
 function Survey() {
   const navigate = useNavigate();
@@ -146,32 +147,37 @@ function Survey() {
         </S.opt2>
       </S.optionDiv>
       <S.Form onSubmit={handleSubmit(onValid)}></S.Form>
+
       <S.AgeWrapper>
         <S.Label>나이</S.Label>
-        <S.Input></S.Input>
+        <S.Input />
       </S.AgeWrapper>
+
       <S.TownContainer>
         <S.Label>살고 있는 동네</S.Label>
         <S.TownWrapper>
-          <GuDropDown></GuDropDown>
+          <GuDropDown />
         </S.TownWrapper>
       </S.TownContainer>
+
       <S.Wrapper2>
         <S.Label>분위기</S.Label>
         <S.CheckBoxWrapper>
-          <MoodCheckBox></MoodCheckBox>
+          <MoodCheckBox />
         </S.CheckBoxWrapper>
       </S.Wrapper2>
+
       <S.Wrapper2>
         <S.Label>동네 장점</S.Label>
         <S.CheckBoxWrapper>
-          <AdvantageCheckBox></AdvantageCheckBox>
+          <AdvantageCheckBox />
         </S.CheckBoxWrapper>
       </S.Wrapper2>
+
       <S.Wrapper2>
         <S.Label>동네 단점</S.Label>
         <S.CheckBoxWrapper>
-          <DisadvantageCheckBox></DisadvantageCheckBox>
+          <DisadvantageCheckBox />
         </S.CheckBoxWrapper>
       </S.Wrapper2>
       <S.Wrapper3>

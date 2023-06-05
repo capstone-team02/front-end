@@ -2,6 +2,7 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
 function Start() {
+  const navigate = useNavigate();
   return (
     <S.Container>
       <S.Image src={require("../../imgs/startPage.png")}></S.Image>
@@ -10,7 +11,7 @@ function Start() {
       <S.ExplainText1>내가 살고 싶은 곳</S.ExplainText1>
       <S.ExplainText2>나의 도시를 찾아서</S.ExplainText2>
       <S.StartBtn>
-        <S.BtnText>시작하기</S.BtnText>
+        <S.BtnText onClick={() => navigate("/login")}>시작하기</S.BtnText>
       </S.StartBtn>
     </S.Container>
   );

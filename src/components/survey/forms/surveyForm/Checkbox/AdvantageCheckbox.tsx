@@ -1,9 +1,33 @@
-import * as S from "./styled";
+import * as S from "./style";
 import { useState, useCallback, useEffect } from "react";
+import { useFormContext } from "react-hook-form";
 import { advantageGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
+import { ISurveyForm } from "../../../../../interfaces/surveyForm";
+import AdvantageCheckBoxInput from "./CheckboxInput/AdvantageCheckBoxInput";
 
 function AdvantageCheckBox() {
+  //   {
+  //   index,
+  //   advantageValue,
+  //   selected,
+  //   setSelected,
+  // }: {
+  //   index: number;
+  //   advantageValue: string[];
+  //   selected: boolean[];
+  //   setSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
+  // }
+  const [selected, setSelected] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+
   const [advantage, setAdvantage] = useState<any[]>([]);
 
   useEffect(() => {
@@ -22,10 +46,13 @@ function AdvantageCheckBox() {
   }, []);
   return (
     <>
-      {advantage.map((advantageName) => (
-        <S.CheckBox key={advantageName}>
-          {advantageName.advantageKor}
-        </S.CheckBox>
+      {advantage.map((advantageName, index) => (
+        <AdvantageCheckBoxInput
+          advantageValue={advantageName.advantageKor}
+          index={advantageName.id}
+          selected={selected}
+          setSelected={setSelected}
+        />
       ))}
     </>
   );

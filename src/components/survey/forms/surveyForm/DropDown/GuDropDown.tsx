@@ -1,6 +1,6 @@
-import * as S from "./styled";
+import * as S from "./style";
 import { useState, useCallback, useEffect } from "react";
-import { districtGet} from "../../../../../apis/api/surveyApi";
+import { districtGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
 
 function GuDropDown() {

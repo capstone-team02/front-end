@@ -14,7 +14,7 @@ function Login() {
   const onValid = async (loginForm: ILoginForm) => {
     const success = await handleLogin(loginForm);
     if (success) {
-      navigate("/signup");
+      navigate("/main");
     } else {
       setSubmitFail(true);
     }

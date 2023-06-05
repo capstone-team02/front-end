@@ -1,16 +1,22 @@
 import styled from "styled-components";
 
-export const CheckBox = styled.div`
+export const CheckBox = styled.input`
+  display: none;
+`;
+
+export const Label = styled.label``;
+
+export const HashtagBox = styled.div<{ selected: boolean }>`
   justify-content: center;
   align-items: center;
   padding: 10px 5px;
   gap: 20px;
 
   width: 105px;
-  height: 22px;
+  height: 20px;
 
-  background: #ffffff;
   border: 1px solid #8a8a8a;
+  background-color: ${(props) => (props.selected ? " #F8EFD8" : "white")};
   border-radius: 10px;
 
   font-family: "Pretendard";
@@ -23,4 +29,6 @@ export const CheckBox = styled.div`
   margin-right: 20px;
   color: #000000;
   text-align: center;
+
+  cursor: pointer;
 `;
