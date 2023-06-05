@@ -2,28 +2,40 @@ import * as S from "./style";
 //import * as M from "../../components/account/forms/style";
 import { useForm } from "react-hook-form";
 import { ISignupForm } from "../../interfaces/accountForm";
+import { ISurveyForm } from "../../interfaces/surveyForm";
 import {
   emailCheckPost,
   nicknameCheckPost,
   signupPost,
 } from "../../apis/api/accountApi";
+
+import { surveyPost } from "../../apis/api/surveyApi";
 import { districtGet } from "../../apis/api/surveyApi";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, SetStateAction } from "react";
 import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
 import { IDistrcitForm } from "../../interfaces/districtForm";
 import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDropDown";
 import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/AdvantageCheckbox";
 import DisadvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/DisadvantageCheckbox";
+import StarDropDown from "../../components/survey/forms/surveyForm/DropDown/StarDropDown";
 
 function Survey() {
   const navigate = useNavigate();
   const [submit, setSubmit] = useState(false);
-  const [signupForm, setSignupForm] = useState<ISignupForm>({
-    email: "",
-    nickname: "",
-    password: "",
+
+  const [surveyForm, setSurveyForm] = useState<ISurveyForm>({
+    userEmail: "",
+    district: "",
+    mood: [],
+    advantage: [],
+    disadvantage: [],
+    recommendAge: "",
+    recommendHousing: "",
+    age: "",
+    star: "",
+    review: "",
     isFemale: true,
   });
   const [value, setValue] = useState(true);
@@ -39,8 +51,8 @@ function Survey() {
     setError,
     getValues,
     trigger,
-  } = useForm<ISignupForm>({
-    defaultValues: signupForm,
+  } = useForm<ISurveyForm>({
+    defaultValues: surveyForm,
   });
   const [districts, setDistricts] = useState<IDistrcitForm>({
     guName: "",
@@ -54,43 +66,43 @@ function Survey() {
   //   });
   // }, []);
 
-  const handleNicknameCheck = async () => {
-    const nickname = getValues("nickname");
-    setNicknameChecked(true);
-    console.log(nickname);
-    try {
-      await nicknameCheckPost(nickname).then((res) => {
-        console.log(res.data);
-      });
-      console.log("success");
+  // const handleNicknameCheck = async () => {
+  //   const nickname = getValues("nickname");
+  //   setNicknameChecked(true);
+  //   console.log(nickname);
+  //   try {
+  //     await nicknameCheckPost(nickname).then((res) => {
+  //       console.log(res.data);
+  //     });
+  //     console.log("success");
 
-      setValidNickname(true);
-      setNicknameChecked(true);
-    } catch (error) {
-      setValidNickname(false);
-      setNicknameChecked(true);
-      console.log(error);
-    }
-  };
+  //     setValidNickname(true);
+  //     setNicknameChecked(true);
+  //   } catch (error) {
+  //     setValidNickname(false);
+  //     setNicknameChecked(true);
+  //     console.log(error);
+  //   }
+  // };
 
-  const handleEmailCheck = async () => {
-    const email = getValues("email");
-    setEmailChecked(true);
-    console.log(email);
-    try {
-      await emailCheckPost(email).then((res) => {
-        console.log(res.data);
-      });
-      console.log("success");
+  // const handleEmailCheck = async () => {
+  //   const email = getValues("email");
+  //   setEmailChecked(true);
+  //   console.log(email);
+  //   try {
+  //     await emailCheckPost(email).then((res) => {
+  //       console.log(res.data);
+  //     });
+  //     console.log("success");
 
-      setValidEmail(true);
-      setEmailChecked(true);
-    } catch (error) {
-      setValidEmail(false);
-      setEmailChecked(true);
-      console.log(error);
-    }
-  };
+  //     setValidEmail(true);
+  //     setEmailChecked(true);
+  //   } catch (error) {
+  //     setValidEmail(false);
+  //     setEmailChecked(true);
+  //     console.log(error);
+  //   }
+  // };
   //const { allDistricts } = useDistrict();
 
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -100,22 +112,25 @@ function Survey() {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
 
-  const onValid = async (data: ISignupForm) => {
+  const onValid = async (data: ISurveyForm) => {
     console.log("!");
-    if (data.password !== data.verifyPassword) {
-      setError("verifyPassword", { message: "비밀번호가 일치하지 않습니다." });
-    } else {
-      try {
-        console.log(data);
-        await signupPost({
-          nickname: data.nickname,
-          email: data.email,
-          password: data.password,
-          isFemale: data.isFemale,
-        }).then(onClickToggleModal);
-      } catch (error) {
-        console.log(error);
-      }
+    try {
+      console.log(data);
+      await surveyPost({
+        userEmail: data.userEmail,
+        district: data.district,
+        mood: data.mood,
+        advantage: data.advantage,
+        disadvantage: data.disadvantage,
+        recommendAge: data.recommendAge,
+        recommendHousing: data.recommendHousing,
+        age: data.age,
+        star: data.star,
+        review: data.review,
+        isFemale: data.isFemale,
+      }).then(onClickToggleModal);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -161,6 +176,9 @@ function Survey() {
       </S.Wrapper2>
       <S.Wrapper3>
         <S.Label>우리 동네 평가하기</S.Label>
+        <S.StarWrapper>
+          <StarDropDown />
+        </S.StarWrapper>
       </S.Wrapper3>
       <S.Wrapper4>
         <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>
@@ -168,20 +186,15 @@ function Survey() {
       </S.Wrapper4>
       {isOpenModal && (
         <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
-          <S.Ment1>회원가입 완료 </S.Ment1>
-          <S.Ment2> 회원가입을 축하드립니다! </S.Ment2>
-          <S.Ment2>자유롭게 이용하면서</S.Ment2>
-          <S.Ment2>나만의 도시를찾아보세요</S.Ment2>
-          <S.SuccessIcon
-            src={require("../../imgs/icon/loginSuccessIcon.png")}
-          ></S.SuccessIcon>
-          <S.Line></S.Line>
-          <S.SuccessBtn onClick={(onClickToggleModal) => navigate("/")}>
-            팝업창 닫기
-          </S.SuccessBtn>
+          <S.SurveySuccess onClick={(onClickToggleModal) => navigate("/main")}>
+            회원가입 완료하기
+          </S.SurveySuccess>
         </LoginSuccessModal>
       )}
-      <S.SignUpBtn onClick={onClickToggleModal}></S.SignUpBtn>
+      <S.UnderBar></S.UnderBar>
+      <S.SuccessDiv>
+        <S.SuccessBtn onClick={onClickToggleModal}>가입하기</S.SuccessBtn>
+      </S.SuccessDiv>
     </S.FormContainer>
   );
 }

@@ -82,6 +82,7 @@ export const Notice = styled.div`
   margin-top: 15px;
   color: #acacac;
 `;
+
 export const Radio = styled.input`
   width: 15px;
   height: 15px;
@@ -373,68 +374,41 @@ export const Bar = styled.div`
   border: 2px solid #c4c4c4;
 `;
 
-export const Ment1 = styled.a`
+export const SurveySuccess = styled.button`
+  width: 138px;
+  height: 50px;
+  margin: 40px 231px 60px 231px;
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
-  font-size: 60px;
-  line-height: 72px;
+  font-size: 12px;
+  line-height: 29px;
   /* identical to box height */
-
-  text-align: center;
-
-  color: black;
-  margin-top: 50px;
-  margin-bottom: 54px;
-`;
-
-export const Ment2 = styled.a`
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 150%;
-  /* or 48px */
-
-  text-align: center;
-
-  color: #000000;
-`;
-
-export const SuccessIcon = styled.img`
-  width: 180px;
-  height: 180px;
-`;
-
-export const Line = styled.div`
-  width: 670px;
-  height: 0px;
-
-  border: 0.7px solid #9d9d9d;
-  margin-top: 54px;
+  background: black;
+  background: #000000;
+  border-radius: 20px;
+  color: #ffffff;
 `;
 
 export const SuccessBtn = styled.button`
-  display: flex;
-  flex-direction: row;
-  padding: 10px 25px;
-
   width: 138px;
-  height: 42px;
-  margin-top: 40px;
-
-  background: #000000;
-  border-radius: 20px;
+  height: 50px;
+  margin: 40px 231px 60px 231px;
   font-family: "Pretendard";
   font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-
-  text-align: center;
-  align-items: center;
-
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+  background: black;
+  background: #000000;
+  border-radius: 20px;
   color: #ffffff;
-  cursor: pointer;
+`;
+export const SuccessDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
 `;
 
 export const CheckBoxWrapper = styled.div`
@@ -442,4 +416,15 @@ export const CheckBoxWrapper = styled.div`
   height: 102px;
   display: flex;
   flex-wrap: wrap;
+`;
+
+export const UnderBar = styled.div`
+  margin-top: 77px;
+  border: 2px solid #c4c4c4;
+`;
+
+export const StarWrapper = styled.div`
+  width: 300px;
+  height: 100%;
+  margin-top: 14px;
 `;
