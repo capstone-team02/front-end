@@ -7,19 +7,15 @@ const REVIEW_API = "/mainMap/totalReview";
 const KEYWORD_API = "/mainMap/districtKeyword";
 const BUDONGSAN_API = "/mainMap/realEstateByDistrict";
 
-export const reviewDistrictPost = (district: string) => {
+export const reviewDistrictPost = (MapDistrictForm: IMapDistrictForm) =>
   baseApi.post(REVIEW_API, {
-    params: { district },
+    district: MapDistrictForm.district,
   });
-  console.log("params " + district);
-};
 
-export const keyWordDistrictPost = (district: string) => {
+export const keyWordDistrictPost = (MapDistrictForm: IMapDistrictForm) =>
   baseApi.post(KEYWORD_API, {
-    params: { district },
+    district: MapDistrictForm.district,
   });
-  console.log("params " + district);
-};
 
 // export const budongsanDistrictPost = (MapDistrictForm: IMapDistrictForm) => {
 //   baseApi

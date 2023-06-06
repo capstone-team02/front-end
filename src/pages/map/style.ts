@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
 export const Map = styled.div`
   height: 100%;
   width: 70%;
+  justify-contet: center;
 `;
 
 export const Banner = styled.div`
@@ -83,34 +84,33 @@ export const TopText = styled.a`
   line-height: 17px;
   color: #bbd145;
 `;
-export const TopBox = styled.button`
-  width: 133px;
-  height: 149px;
-  border-radius: 10px;
-  //border: 1px solid #000000;
-  border: none;
-  margin-top: 5px;
-  background: white;
-  cursor: pointer;
+// export const TopBox = styled.button`
+//   width: 133px;
+//   height: 149px;
+//   border-radius: 10px;
+//   //border: 1px solid #000000;
+//   border: none;
+//   margin-top: 5px;
+//   background: white;
+//   cursor: pointer;
 
-  font-family: "Pretendard";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
-  /* identical to box height */
+//   font-family: "Pretendard";
+//   font-style: normal;
+//   font-weight: 700;
+//   font-size: 18px;
+//   line-height: 22px;
+//   /* identical to box height */
 
-  color: #000000;
-`;
+//   color: #000000;
+// `;
 export const TopDiv = styled.div`
   margin-right: 5px;
 
   width: 133px;
   height: 149px;
   border-radius: 10px;
-
   background: white;
-  cursor: pointer;
+
   display: flex;
   flex-direction: column;
 
@@ -120,7 +120,7 @@ export const TopDiv = styled.div`
   font-size: 18px;
   line-height: 22px;
   /* identical to box height */
-
+  margin-top: 10px;
   color: #000000;
 `;
 
@@ -131,20 +131,30 @@ export const CityImg = styled.img`
 
   border-radius: 10px 10px 0px 0px;
 `;
-export const CityText = styled.div`
+
+export const Input = styled.input`
+  display: none;
+  visibility: hidden;
+`;
+export const CityLabel = styled.label`
+  display: none;
+`;
+
+export const CityText = styled.div<{ selected: boolean }>`
   padding: 10px 15px;
+  cursor: pointer;
 
   height: 17px;
-
-  background: #ffffff;
+  background-color: ${(props) => (props.selected ? " #E9FF6E" : "white")};
+  //background: #ffffff;
   border: 0.5px solid #000000;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
   border-radius: 0px 0px 10px 10px;
-
+  text-align: center;
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 17px;
   /* identical to box height */
   margin-top: 0px;
@@ -226,58 +236,102 @@ export const ReviewBox = styled.div`
   background: #f5f5f5;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  //overflow-y: scroll;
+`;
+
+export const Nickname = styled.div`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 14px;
+
+  color: #000000;
+`;
+
+export const ReviewTextBox = styled.div`
+  overflow-y: scroll;
+  height: 56px;
+  width: 400px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 10px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  color: #000000;
 `;
 
 export const BuDongSanContainer = styled.div`
   height: 249px;
-
+  width: 590px;
   margin-top: 45px;
   display: flex;
   flex-direction: column;
   margin-bottom: 250px;
+  width: calc(100% + 58.5px * 2);
+
+  margin: 45px 58.8px 250px -58.5px;
 `;
 
 export const BuDongSanWrapper = styled.div`
   height: 184px;
   margin-top: 20px;
-  justify-content: space-between;
+  //justify-content: space-between;
   display: flex;
   flex-direction: row;
+  width: calc(100% + 24 * 2);
+
+  margin: 24px 0 24px -24px;
+`;
+export const BuDongSanText = styled.div`
+  margin-left: 58.5px;
 `;
 
 export const BuDongSanBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 15px 14px;
+  padding: 10px 10px;
   gap: 35px;
 
   width: 110px;
   height: 184px;
 
   background: #ffffff;
-  border: 0.5px solid #000000;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   text-align: center;
+  border: 0.5px solid #000000;
 `;
 
+export const BuDongSanBoxWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10px;
+  width: 472px;
+`;
 export const BuildingName = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: "Pretendard";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  width: 110px;
+  font-size: 15px;
+
   justify-contet: center;
+  width: 100%;
 `;
 
 export const Price = styled.div`
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // margin-top: 12px;
+  // margin-bottom: 12px;
   font-family: "Pretendard";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 15px;
   width: 110px;
   justify-contet: center;
@@ -290,4 +344,24 @@ export const HouseType = styled.div`
   font-size: 13px;
   width: 110px;
   justify-contet: center;
+`;
+
+export const ResetText = styled.a`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  width: 110px;
+`;
+
+export const LeftArrow = styled.div`
+  margin-top: 90px;
+  margin-left: 40px;
+`;
+
+export const RightArrow = styled.div`
+  margin-left: 10px;
+  margin-top: 90px;
 `;
