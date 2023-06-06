@@ -13,11 +13,11 @@ import { TbArrowBigRightFilled } from "react-icons/tb";
 import { TbArrowBigLeftFilled } from "react-icons/tb";
 function Map() {
   const mapElement = useRef(null);
-  const [latitude, setLatitude] = useState(37.5637990488);
-  const [longitude, setLongitude] = useState(126.9545535618);
+  const [latitude, setLatitude] = useState(37.5595);
+  const [longitude, setLongitude] = useState(126.9568);
 
-  const latitudeList = [37.5637990488, 37.5478, 37.5974];
-  const longitudeList = [126.9545535618, 127.0187, 127.0189];
+  const latitudeList = [37.5595, 37.541, 37.5974];
+  const longitudeList = [126.9568, 127.0177, 127.0189];
 
   useEffect(() => {
     const { naver } = window;
