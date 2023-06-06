@@ -20,7 +20,6 @@ import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox
 import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import DisadvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/DisadvantageCheckbox";
 import StarDropDown from "../../components/survey/forms/surveyForm/DropDown/StarDropDown";
-import DisadvantageCheckBoxInput from "../../components/survey/forms/surveyForm/Checkbox/CheckboxInput/DisadvantageCheckbox";
 
 function Survey() {
   const navigate = useNavigate();
@@ -39,11 +38,6 @@ function Survey() {
     review: "",
     isFemale: true,
   });
-  const [value, setValue] = useState(true);
-  const [nicknameChecked, setNicknameChecked] = useState(false);
-  const [validNickname, setValidNickname] = useState(true);
-  const [emailChecked, setEmailChecked] = useState(false);
-  const [validEmail, setValidEmail] = useState(true);
 
   const {
     register,
@@ -114,9 +108,8 @@ function Survey() {
   }, [isOpenModal]);
 
   const onValid = async (data: ISurveyForm) => {
-    console.log("!");
+    console.log("Data " + data.disadvantage);
     try {
-      console.log(data);
       await surveyPost({
         userEmail: data.userEmail,
         district: data.district,
@@ -146,61 +139,63 @@ function Survey() {
           <S.optText>사전 정보</S.optText>
         </S.opt2>
       </S.optionDiv>
-      <S.Form onSubmit={handleSubmit(onValid)}></S.Form>
+      <S.Form onSubmit={handleSubmit(onValid)}>
+        <S.AgeWrapper>
+          <S.Label>나이</S.Label>
+          <S.Input />
+        </S.AgeWrapper>
 
-      <S.AgeWrapper>
-        <S.Label>나이</S.Label>
-        <S.Input />
-      </S.AgeWrapper>
+        <S.TownContainer>
+          <S.Label>살고 있는 동네</S.Label>
+          <S.TownWrapper>
+            <GuDropDown />
+          </S.TownWrapper>
+        </S.TownContainer>
 
-      <S.TownContainer>
-        <S.Label>살고 있는 동네</S.Label>
-        <S.TownWrapper>
-          <GuDropDown />
-        </S.TownWrapper>
-      </S.TownContainer>
+        <S.Wrapper2>
+          <S.Label>분위기</S.Label>
+          <S.CheckBoxWrapper>
+            <MoodCheckBox id={"mood"} />
+          </S.CheckBoxWrapper>
+        </S.Wrapper2>
 
-      <S.Wrapper2>
-        <S.Label>분위기</S.Label>
-        <S.CheckBoxWrapper>
-          <MoodCheckBox />
-        </S.CheckBoxWrapper>
-      </S.Wrapper2>
+        <S.Wrapper2>
+          <S.Label>동네 장점</S.Label>
+          <S.CheckBoxWrapper>
+            <AdvantageCheckBox />
+          </S.CheckBoxWrapper>
+        </S.Wrapper2>
 
-      <S.Wrapper2>
-        <S.Label>동네 장점</S.Label>
-        <S.CheckBoxWrapper>
-          <AdvantageCheckBox />
-        </S.CheckBoxWrapper>
-      </S.Wrapper2>
-
-      <S.Wrapper2>
-        <S.Label>동네 단점</S.Label>
-        <S.CheckBoxWrapper>
-          <DisadvantageCheckBox />
-        </S.CheckBoxWrapper>
-      </S.Wrapper2>
-      <S.Wrapper3>
-        <S.Label>우리 동네 평가하기</S.Label>
-        <S.StarWrapper>
-          <StarDropDown />
-        </S.StarWrapper>
-      </S.Wrapper3>
-      <S.Wrapper4>
-        <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>
-        <S.ReviewInput></S.ReviewInput>
-      </S.Wrapper4>
-      {isOpenModal && (
-        <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
-          <S.SurveySuccess onClick={(onClickToggleModal) => navigate("/main")}>
-            회원가입 완료하기
-          </S.SurveySuccess>
-        </LoginSuccessModal>
-      )}
-      <S.UnderBar></S.UnderBar>
-      <S.SuccessDiv>
-        <S.SuccessBtn onClick={onClickToggleModal}>가입하기</S.SuccessBtn>
-      </S.SuccessDiv>
+        <S.Wrapper2>
+          <S.Label>동네 단점</S.Label>
+          <S.CheckBoxWrapper>
+            <DisadvantageCheckBox id={"disadvantage"} />
+          </S.CheckBoxWrapper>
+        </S.Wrapper2>
+        <S.Wrapper3>
+          <S.Label>우리 동네 평가하기</S.Label>
+          <S.StarWrapper>
+            <StarDropDown />
+          </S.StarWrapper>
+        </S.Wrapper3>
+        <S.Wrapper4>
+          <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>
+          <S.ReviewInput></S.ReviewInput>
+        </S.Wrapper4>
+        {isOpenModal && (
+          <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
+            <S.SurveySuccess
+              onClick={(onClickToggleModal) => navigate("/main")}
+            >
+              회원가입 완료하기
+            </S.SurveySuccess>
+          </LoginSuccessModal>
+        )}
+        <S.UnderBar></S.UnderBar>
+        <S.SuccessDiv>
+          <S.SuccessBtn onClick={onClickToggleModal}>가입하기</S.SuccessBtn>
+        </S.SuccessDiv>
+      </S.Form>
     </S.FormContainer>
   );
 }

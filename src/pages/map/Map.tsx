@@ -1,38 +1,14 @@
+import { ThemeConsumer } from "styled-components";
 import {
   budongsanDistrictPost,
   reviewDistrictPost,
 } from "../../apis/api/mapApi";
+import { IMapDistrictForm } from "../../interfaces/surveyForm";
 import * as S from "./style";
 import { useEffect, useRef, useState } from "react";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 function Map() {
-  //   useEffect(() => {
-  //     const script = document.createElement("script");
-  //     script.type = "text/javascript";
-  //     script.src =
-  //       "https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=y20qex6myf";
-  //     document.head.appendChild(script);
-  //     const { naver } = window;
-  //     let map: naver.maps.Map;
-  //     const center: naver.maps.LatLng = new naver.maps.LatLng(
-  //       37.3595704,
-  //       127.105399
-  //     );
-
-  //     map = new naver.maps.Map("map", {
-  //       center: center,
-  //       zoom: 16,
-  //     });
-  //     // const center: naver.maps.LatLng = new naver.maps.LatLng(
-  //     //   37.3595704,
-  //     //   127.105399
-  //     // );
-
-  //     // map = new naver.maps.Map("map", {
-  //     //   center: center,
-  //     //   zoom: 16,
-  //     // });
-  //   }, []);
   const mapElement = useRef(null);
 
   useEffect(() => {
@@ -56,7 +32,7 @@ function Map() {
     });
   }, []);
 
-  const onValidChangeUserInfo = async (data: string) => {
+  const onValidChangeUserInfo = async (data: IMapDistrictForm) => {
     // 회원정보 수정 API 호출 파트
 
     const formData = new FormData();
@@ -68,32 +44,42 @@ function Map() {
     }
   };
 
-  const [district, setDistrict] = useState("");
+  const [district, setDistrict] = useState<IMapDistrictForm>({
+    district: "",
+  });
   const [review, setReview] = useState<any[]>([]);
-  const [budongsan, setBudongsan] = useState<[]>();
+  const [budongsan, setBudongsan] = useState<any[]>();
   const [keyword, setKeyword] = useState<any[]>([]);
-
-  // const getInfos = async (data: string) => {
-  //   console.log("getInfos");
-  //   console.log(data);
-  //   try {
-  //     const response = await budongsanDistrictPost(data);
-  //     console.log(response);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  const districtName = ["북아현동", "행당동", "돈암동"];
 
   useEffect(() => {
-    setDistrict("북아현동");
-    const res1 = budongsanDistrictPost(district);
-    //setBudongsan(res1.data);
-    // async function getInfos() {
-    //   const response = await budongsanDistrictPost(district);
-    //   console.log(response);
+    const fetchData = async () => {
+      console.log("a");
+      try {
+        const response = await budongsanDistrictPost({
+          district: "북아현동",
+        });
+        setBudongsan(response.data);
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
 
-    // }
-  });
+    // const onValidChangeUserInfo = async (data: IMapDistrictForm) => {
+    //   // 회원정보 수정 API 호출 파트
+
+    //   const formData = new FormData();
+    //   //formData.append("image", data.image[0]);
+    //   try {
+    //     const response =await budongsanDistrictPost({district:"북아현동"});
+
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+  }, []);
+
   return (
     <>
       <S.Container>
@@ -104,15 +90,36 @@ function Map() {
             <S.CityWrapper>
               <S.CityBox>
                 <S.TopText>TOP1</S.TopText>
-                <S.TopBox></S.TopBox>
+                <S.TopBox>
+                  <S.TopDiv>
+                    <S.CityImg
+                      src={require("../../imgs/city/seodaemoon.jpg")}
+                    ></S.CityImg>
+                    <S.CityText>서대문구 북아현동</S.CityText>
+                  </S.TopDiv>
+                </S.TopBox>
               </S.CityBox>
               <S.CityBox>
                 <S.TopText>TOP2</S.TopText>
-                <S.TopBox></S.TopBox>
+                <S.TopBox>
+                  <S.TopDiv>
+                    <S.CityImg
+                      src={require("../../imgs/city/seongdong.jpg")}
+                    ></S.CityImg>
+                    <S.CityText>성동구 옥수동</S.CityText>
+                  </S.TopDiv>
+                </S.TopBox>
               </S.CityBox>
               <S.CityBox>
                 <S.TopText>TOP3</S.TopText>
-                <S.TopBox></S.TopBox>
+                <S.TopBox type="button">
+                  <S.TopDiv>
+                    <S.CityImg
+                      src={require("../../imgs/city/sungbook.jpg")}
+                    ></S.CityImg>
+                    <S.CityText>성북구 돈암동</S.CityText>
+                  </S.TopDiv>
+                </S.TopBox>
               </S.CityBox>
             </S.CityWrapper>
             <S.KeywordContainer>
@@ -146,9 +153,13 @@ function Map() {
             <S.BuDongSanContainer>
               <S.Label>부동산 정보</S.Label>
               <S.BuDongSanWrapper>
-                <S.BuDongSanBox></S.BuDongSanBox>
-                <S.BuDongSanBox></S.BuDongSanBox>
-                <S.BuDongSanBox></S.BuDongSanBox>
+                {budongsan?.slice(0, 3).map((value, index) => (
+                  <S.BuDongSanBox key={value.buildingName}>
+                    <S.BuildingName>{value.buildingName}</S.BuildingName>
+                    <S.Price>매매/ {value.price}</S.Price>
+                    <S.HouseType>{value.houseType}</S.HouseType>
+                  </S.BuDongSanBox>
+                ))}
               </S.BuDongSanWrapper>
             </S.BuDongSanContainer>
           </S.InfoBox>

@@ -1,4 +1,7 @@
 import * as S from "./style";
+import { useFormContext } from "react-hook-form";
+import { ISurveyForm } from "../../../../../../interfaces/surveyForm";
+import { useState } from "react";
 
 function MoodCheckBoxInput({
   index,
@@ -11,7 +14,8 @@ function MoodCheckBoxInput({
   selected: boolean[];
   setSelected: React.Dispatch<React.SetStateAction<boolean[]>>;
 }) {
-  // const { register } = useFormContext<ISurveyForm>();
+  //const { register } = useFormContext<ISurveyForm>();
+
   const toggleSelected = (index: number) => {
     setSelected((prev) => {
       const temp = [...prev];
@@ -22,14 +26,15 @@ function MoodCheckBoxInput({
 
   return (
     <>
-      <S.Label onClick={() => toggleSelected(index)}>
+      <S.Label
+        onClick={() => {
+          toggleSelected(index);
+          //mood.push(moodValue);
+        }}
+      >
         <S.HashtagBox selected={selected[index]}>{moodValue}</S.HashtagBox>
       </S.Label>
-      <S.CheckBox
-        id={moodValue}
-        //{...register(`advantage.${index}`)}
-        type="checkbox"
-      ></S.CheckBox>
+      <S.CheckBox id={moodValue} type="checkbox"></S.CheckBox>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { stringify } from "querystring";
 import { baseApi } from "../utils/instance";
 import axios from "axios";
+import { IMapDistrictForm } from "../../interfaces/surveyForm";
 
 const REVIEW_API = "/mainMap/totalReview";
 const KEYWORD_API = "/mainMap/districtKeyword";
@@ -20,9 +21,16 @@ export const keyWordDistrictPost = (district: string) => {
   console.log("params " + district);
 };
 
-export const budongsanDistrictPost = (district: string) => {
+// export const budongsanDistrictPost = (MapDistrictForm: IMapDistrictForm) => {
+//   baseApi
+//     .post(BUDONGSAN_API, {
+//       district: MapDistrictForm.district,
+//     })
+//     .then((res) => res.data);
+//   console.log("params " + MapDistrictForm.district);
+// };
+
+export const budongsanDistrictPost = (MapDistrictForm: IMapDistrictForm) =>
   baseApi.post(BUDONGSAN_API, {
-    params: { district },
+    district: MapDistrictForm.district,
   });
-  console.log("params " + district);
-};

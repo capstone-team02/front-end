@@ -1,10 +1,9 @@
 import * as S from "./style";
 import { useState, useCallback, useEffect } from "react";
-import { moodGet } from "../../../../../apis/api/surveyApi";
+import { disadvantageGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
-import MoodCheckBoxInput from "./CheckboxInput/MoodCheckboxInput";
 
-function MoodCheckBox() {
+function MoodCheckBox({ id }: { id: string }) {
   const [mood, setMood] = useState<any[]>([]);
   const [selected, setSelected] = useState([
     false,
@@ -15,12 +14,34 @@ function MoodCheckBox() {
     false,
   ]);
 
+  const [moodList, seMoodList] = useState<any[]>([]);
+  const [moodValue, setMoodValue] = useState("");
+  const toggleSelected = (index: number) => {
+    setSelected((prev) => {
+      const temp = [...prev];
+      temp[index] = !temp[index];
+      return temp;
+    });
+  };
+
+  const ListSelected = (value: string) => {
+    seMoodList(moodList.concat(value));
+    setMoodValue(value);
+    console.log(moodList);
+  };
+
+  const onChange = (e: any) => {
+    console.log(e.target);
+    console.log("e.target.name:" + e.target.name);
+    console.log("e.target.value:" + e.target.value);
+  };
+
   useEffect(() => {
     console.log("useEffect");
     const fetchData = async () => {
       console.log("a");
       try {
-        const response = await moodGet();
+        const response = await disadvantageGet();
         setMood(response.data);
         console.log(response.data);
       } catch (e) {
@@ -31,14 +52,19 @@ function MoodCheckBox() {
   }, []);
   return (
     <>
-      {mood.map((moodName, index) => (
-        <MoodCheckBoxInput
-          moodValue={moodName.moodKor}
-          index={moodName.id}
-          selected={selected}
-          setSelected={setSelected}
-        />
+      {mood.map((moodName) => (
+        <S.CheckBox
+          key={moodName.id}
+          onClick={() => {
+            toggleSelected(moodName.id);
+            ListSelected(moodName.disadvantageKor);
+          }}
+          selected={selected[moodName.id]}
+        >
+          {moodName.disadvantageKor}
+        </S.CheckBox>
       ))}
+      <S.Input id={id} onChange={onChange} type="checkbox" />
     </>
   );
 }

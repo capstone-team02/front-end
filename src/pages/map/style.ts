@@ -87,11 +87,69 @@ export const TopBox = styled.button`
   width: 133px;
   height: 149px;
   border-radius: 10px;
-  border: 1px solid #000000;
+  //border: 1px solid #000000;
+  border: none;
   margin-top: 5px;
+  background: white;
   cursor: pointer;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #000000;
+`;
+export const TopDiv = styled.div`
+  margin-right: 5px;
+
+  width: 133px;
+  height: 149px;
+  border-radius: 10px;
+
+  background: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #000000;
 `;
 
+export const CityImg = styled.img`
+  height: 110px;
+
+  border: 0.5px solid #000000;
+
+  border-radius: 10px 10px 0px 0px;
+`;
+export const CityText = styled.div`
+  padding: 10px 15px;
+
+  height: 17px;
+
+  background: #ffffff;
+  border: 0.5px solid #000000;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 10px 10px;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  margin-top: 0px;
+  color: #000000;
+`;
 export const KeywordContainer = styled.div`
   height: 184px;
   margin-top: 45px;
@@ -201,4 +259,35 @@ export const BuDongSanBox = styled.div`
   border: 0.5px solid #000000;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  text-align: center;
+`;
+
+export const BuildingName = styled.div`
+  margin-top: 10px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  width: 110px;
+  justify-contet: center;
+`;
+
+export const Price = styled.div`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  width: 110px;
+  justify-contet: center;
+`;
+
+export const HouseType = styled.div`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  width: 110px;
+  justify-contet: center;
 `;

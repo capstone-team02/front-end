@@ -11,3 +11,8 @@ export interface ISurveyForm {
   review: string;
   isFemale: boolean;
 }
+
+export interface IMapDistrictForm{
+
+  district: string;
+}
