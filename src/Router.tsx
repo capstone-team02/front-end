@@ -1,37 +1,60 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import React from "react";
-import LoginForm from "./components/account/forms/loginForm/loginFrom"
-import SignUpForm from "./components/account/forms/signupFrom/signupForm";
-import MypageForm from "./components/account/forms/mypageForm/mypageFrom"; 
+import SignUp from "./pages/signup/Signup";
 import Mypage from "./pages/mypage/Mypage";
 import Login from "./pages/login/Login";
+import Survey from "./pages/survey/Survey";
+import Start from "./pages/start/StartPage";
+import Main from "./pages/main/Main";
+import Map from "./pages/map/Map";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
- 
       {
-        path: "login",
-       // element: <Login />,
+        path: "",
         children: [
           {
             path: "",
-            element: <LoginForm />,
+            element: <Start />,
           },
-         
         ],
       },
-      
+      {
+        path: "login",
+        // element: <Login />,
+        children: [
+          {
+            path: "",
+            element: <Login />,
+          },
+        ],
+      },
+
       {
         path: "signup",
         //element: <SignUp />,
         children: [
           {
             path: "",
-            element: <SignUpForm />,
+            element: <SignUp />,
+          },
+          // {
+          //   path: "success",
+          //   element: <SignUpSuccess />,
+          // },
+        ],
+      },
+      {
+        path: "survey",
+        //element: <SignUp />,
+        children: [
+          {
+            path: "",
+            element: <Survey />,
           },
           // {
           //   path: "success",
@@ -41,11 +64,40 @@ const router = createBrowserRouter([
       },
       {
         path: "mypage",
-        element: <Mypage />,
+        //element: <Mypage />,
         children: [
           {
             path: "",
-            element: <MypageForm />,
+            element: <Mypage />,
+          },
+          // {
+          //   path: "success",
+          //   element: <SignUpSuccess />,
+          // },
+        ],
+      },
+      {
+        path: "main",
+        //element: <Mypage />,
+        children: [
+          {
+            path: "",
+            element: <Main />,
+          },
+          // {
+          //   path: "success",
+          //   element: <SignUpSuccess />,
+          // },
+        ],
+      },
+      {
+        path: "map",
+
+        //element: <Mypage />,
+        children: [
+          {
+            path: "",
+            element: <Map />,
           },
           // {
           //   path: "success",

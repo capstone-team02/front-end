@@ -1,57 +1,209 @@
 import styled from "styled-components";
 
-export const PageWrapper = styled.div`
-  // width: 100%;
-  // height: 100vh;
-  // padding: 0;
-`;
-export const HeaderWrapper = styled.div`
-  width: 100%;
-  height: 60px;
-  background-color: var(--subColor);
+export const FormContainer = styled.div`
+ height: 100%,
+ width: 555px;
+ display: flex;
+ justify-content: center;
+ `;
+
+export const Form = styled.form`
+  width: 555px;
+  height: 610px;
+  margin-top: 159px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const LogoText1 = styled.h1`
+  display: flex;
+  font-family: "gosanja";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000000;
+`;
+export const LogoText2 = styled.h1`
+  display: flex;
+  font-family: "gosanja";
+  font-weight: 1000;
+  font-size: 60px;
+  color: #000000;
+`;
+
+export const Logo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 310px;
+  height: 143px;
+  left: 565px;
+`;
+
+export const LoginWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 555px;
+  height: 155px;
+  left: 442.5px;
+  margin-top: 105px;
+`;
+export const IdWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 42px;
+  position: relative;
+  height: 70px;
+  width: 555px;
+`;
+
+export const PasswordWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 42px;
+  position: relative;
+  height: 70px;
+  width: 555px;
+  margin-top: 15px;
+`;
+
+export const Input = styled.input`
+  box-sizing: border-box;
+
+  position: absolute;
+  width: 440px;
+  height: 70px;
+  left: 115px;
+  top: -0.25px;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  padding-left: 15px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  cursor: text;
+  
+`;
+
+export const Label = styled.label`
+  width: 80px;
+  height: 34px;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 34px;
+  /* identical to box height */
+
+  text-align: right;
+
+  color: #000000;
+`;
+export const SubmitFail = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30px;
+
+  width: 400px;
+  height: 27px;
+  top: 605px;
+
+  font-family: "Pretendard";
+  font-weight: 500;
+  margin-left: 60px;
+  margin-top: 10px;
+  font-size: 13px;
+`;
+
+export const LoginBtn = styled.button`
+  display: flex;
+  margin-top: 60px;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 15px 50px;
+  font-family: "Pretendard";
+  width: 220px;
+  height: 78px;
+  left: 610px;
+  top: 725px;
+  cursor: pointer;
+
+  background: #050505;
+  border-radius: 30px;
 `;
-export const SnackVillage = styled.div`
-  // width: 514px;
-  // height: 100%;
-  // font-family: "Shrikhand", sans-serif;
-  // font-style: italic;
-  // font-size: 30px;
-  // line-height: 44px;
-  // text-align: center;
-  // font-weight: 400;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // color: #fffbf7;
-  // cursor: pointer;
+
+export const LoginText = styled.a`
+  width: 120px;
+  height: 48px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  /* identical to box height */
+
+  color: #ffffff;
 `;
-export const MainWrapper = styled.div`
-  // width: 100%;
-  // height: calc(100vh - 60px);
-  // display: grid;
-  // grid-template-columns: repeat(2, 1fr);
+export const FindIdPasswordSignUp = styled.div`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
 `;
-export const Bg = styled.img`
-  position: absolute;
-  width: 100%;
-  height: calc(100vh - 60px);
-  z-index: -1;
-`;
-export const MainLeft = styled.div`
+
+export const Options = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
   align-items: center;
-  padding-right: 80px;
+  margin-left: 20px;
+  width: 350px;
+  height: 27px;
+  top: 605px;
+  margin-top: 20px;
 `;
-export const AnywayImg = styled.img`
-  width: 347px;
-  height: 484px;
+
+export const FindId = styled.span`
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 10px;
 `;
-export const MainRight = styled.div`
-  // display: flex;
-  // align-items: flex-start;
-  // justify-content: flex-start;
+export const FindPassword = styled.span`
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+`;
+
+export const RegisterDiv = styled.div`
+  width: 219px;
+  height: 23px;
+  margin-top: 50px;
+  gap: 10px;
+  span:first-child {
+    font-weight: 400;
+    font-size: 14px;
+  }
+`;
+export const Register = styled.span`
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 20px;
 `;

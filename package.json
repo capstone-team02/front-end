@@ -10,10 +10,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-icons": "^4.9.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "recoil": "^0.7.7",
+    "redux-saga": "^1.2.3",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
   },
@@ -42,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/navermaps": "^3.6.5",
     "@types/node": "^18.16.3",
     "@types/styled-components": "^5.1.26"
   }

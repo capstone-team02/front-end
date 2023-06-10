@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import GlobalStyles from "../../../../styles/GlobalStyles";
 
 export const FormContainer = styled.div`
   width: 600px;
@@ -14,7 +13,6 @@ export const Form = styled.form`
   margin-left: 80px;
   margin-top: 15px;
   align-items: center;
-
 `;
 
 export const Title = styled.div`
@@ -29,10 +27,10 @@ export const Title = styled.div`
   line-height: 58px;
 `;
 export const optionDiv = styled.div`
-margin-top:30px;
+  margin-top: 30px;
   width: 430px;
   height: 36px;
-  margin-left:50px;
+  margin-left: 50px;
   display: flex;
   align-items: center;
 `;
@@ -74,20 +72,21 @@ export const opt2 = styled.div`
   height: 36px;
   left: 738px;
   top: 235px;
-  border-bottom: solid 3px #ACACAC;
-  color: #ACACAC;
+  border-bottom: solid 3px #acacac;
+  color: #acacac;
 `;
 
 export const Notice = styled.div`
   font-weight: 700;
   font-size: 12px;
   margin-top: 15px;
-  color : #ACACAC;
+  color: #acacac;
 `;
 export const Radio = styled.input`
   width: 15px;
   height: 15px;
   margin-right: 15px;
+  cursor: pointer;
 `;
 
 export const IsFemaleContainer = styled.div`
@@ -137,6 +136,7 @@ export const HalfSubmitForEmail = styled.button`
   background: #ededed;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const HalfSubmitForNickname = styled.button`
@@ -149,6 +149,7 @@ export const HalfSubmitForNickname = styled.button`
   background: #ededed;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 `;
 export const HalfInput = styled.input`
   margin-top: 10px;
@@ -163,6 +164,7 @@ export const HalfInput = styled.input`
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 20px;
+  cursor: text;
 `;
 
 export const SubmitText = styled.a`
@@ -172,7 +174,7 @@ export const SubmitText = styled.a`
   font-size: 12px;
 `;
 export const EmailWrapper = styled.div`
-  margin-top:44px;
+  margin-top: 44px;
   height: 91px;
   width: 510px;
   display: flex;
@@ -184,7 +186,6 @@ export const EmailInputWrapper = styled.div`
   width: 180px;
   height: 56px;
 `;
-
 
 export const PasswordWrapper = styled.div`
   width: 373px;
@@ -208,51 +209,52 @@ export const ErrorMessage = styled.div`
   font-size: 12px;
   margin-top: 15px;
   width: 375px;
-  color: #E02C2C;
+  color: #e02c2c;
 `;
 export const CheckedMessage = styled.div`
-font-family: "Pretendard";
-font-weight: 700;
-font-size: 12px;
-margin-top: 15px;
-  color: #117E15;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 15px;
+  color: #117e15;
 `;
 
 export const SignUpBtn = styled.button`
-padding: 15px 30px;
-display: flex;
-flex-direction: column;
-width: 143px;
-height: 59px;
-justify-content: center;
-margin-top: 30px;
-margin-left:228.5px;
-background: #000000;
-border-radius: 20px;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  width: 143px;
+  height: 59px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 228.5px;
+  background: #000000;
+  border-radius: 20px;
+  cursor: pointer;
 `;
 export const SignUpTxt = styled.a`
-width: 83px;
-height: 29px;
-font-family: 'Pretendard';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 29px;
-color: #FFFFFF;
-`
-
+  width: 83px;
+  height: 29px;
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  color: #ffffff;
+`;
 
 export const Input = styled.input`
-margin-top: 10px;
-padding: 14px 30px;
-gap: 80px;
-width: 313px;
-height: 24px;
-left: 428px;
-top: 379px;
-background: #ffffff;
-border: 1px solid #8a8a8a;
-border-radius: 20px;
+  margin-top: 10px;
+  padding: 14px 30px;
+  gap: 80px;
+  width: 313px;
+  height: 24px;
+  left: 428px;
+  top: 379px;
+  background: #ffffff;
+  border: 1px solid #8a8a8a;
+  border-radius: 20px;
+  cursor: text;
 `;
 
 export const Label = styled.label`
@@ -264,9 +266,9 @@ export const Label = styled.label`
 `;
 
 export const Bar = styled.div`
-margin-top:30px;
-width: 600px;
-height: 0px;
+  margin-top: 30px;
+  width: 600px;
+  height: 0px;
 
-border: 2px solid #C4C4C4;
-`
+  border: 2px solid #c4c4c4;
+`;

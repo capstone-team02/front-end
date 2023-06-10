@@ -1,16 +1,17 @@
-export interface ILoginForm{
-    email :string,
-    password? : string;
+export interface ILoginForm {
+  email: string;
+  password?: string;
 }
 
-export interface ISignupForm{
-    email : string,
-    password? : string,
-    verifyPassword? : string, 
-    nickname : string,
-    isFemale :boolean;
+export interface ISignupForm {
+  email: string;
+  password?: string;
+  verifyPassword?: string;
+  nickname: string;
+  isFemale: boolean;
 }
 
-export interface ISignupForm{
-    email : string
+export interface ILoggedInForm {
+  email: string;
+  nickname: string;
 }
