@@ -7,7 +7,7 @@ export interface ISignupForm {
   email: string;
   password?: string;
   verifyPassword?: string;
-  nickname: string;
+  username: string;
   isFemale: boolean;
 }
 

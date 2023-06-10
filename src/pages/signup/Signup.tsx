@@ -2,11 +2,7 @@ import * as S from "./style";
 //import * as M from "../../components/account/forms/style";
 import { useForm } from "react-hook-form";
 import { ISignupForm } from "../../interfaces/accountForm";
-import {
-  emailCheckPost,
-  nicknameCheckPost,
-  signupPost,
-} from "../../apis/api/accountApi";
+import { emailCheckPost, signupPost } from "../../apis/api/accountApi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
@@ -16,13 +12,11 @@ function SignUp() {
   const [submit, setSubmit] = useState(false);
   const [signupForm, setSignupForm] = useState<ISignupForm>({
     email: "",
-    nickname: "",
+    username: "",
     password: "",
     isFemale: true,
   });
   const [value, setValue] = useState(true);
-  const [nicknameChecked, setNicknameChecked] = useState(false);
-  const [validNickname, setValidNickname] = useState(true);
   const [emailChecked, setEmailChecked] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
 
@@ -36,25 +30,6 @@ function SignUp() {
   } = useForm<ISignupForm>({
     defaultValues: signupForm,
   });
-
-  const handleNicknameCheck = async () => {
-    const nickname = getValues("nickname");
-    setNicknameChecked(true);
-    console.log(nickname);
-    try {
-      await nicknameCheckPost(nickname).then((res) => {
-        console.log(res.data);
-      });
-      console.log("success");
-
-      setValidNickname(true);
-      setNicknameChecked(true);
-    } catch (error) {
-      setValidNickname(false);
-      setNicknameChecked(true);
-      console.log(error);
-    }
-  };
 
   const handleEmailCheck = async () => {
     const email = getValues("email");
@@ -83,7 +58,7 @@ function SignUp() {
       try {
         console.log(data);
         await signupPost({
-          nickname: data.nickname,
+          username: data.username,
           email: data.email,
           password: data.password,
           isFemale: data.isFemale,
@@ -128,40 +103,19 @@ function SignUp() {
           </S.ChooseWrapper>
         </S.IsFemaleContainer>
         <S.NameWrapper>
-          <S.Label>닉네임</S.Label>
+          <S.Label>이름</S.Label>
           <S.InputSubmitWrapper>
             <S.HalfInput
-              {...register("nickname", {
-                required: "닉네임을 입력해주세요.",
+              {...register("username", {
+                required: "이름을 입력해주세요.",
                 pattern: {
                   value: /^[가-힣a-zA-Z]+$/,
                   message: "올바르지 않은 닉네임 형식입니다.",
                 },
-                onChange: (e) => {
-                  setNicknameChecked(false);
-                  trigger("nickname");
-                },
-                validate: (v) => nicknameChecked === true,
               })}
               type="text"
             />
-            <S.HalfSubmitForNickname onClick={handleNicknameCheck}>
-              <S.SubmitText>중복 확인</S.SubmitText>
-            </S.HalfSubmitForNickname>
           </S.InputSubmitWrapper>
-          {dirtyFields.nickname ? (
-            errors?.nickname?.message ? (
-              <S.ErrorMessage>{errors.nickname?.message}</S.ErrorMessage>
-            ) : nicknameChecked ? (
-              validNickname ? (
-                <S.CheckedMessage>사용 가능한 닉네임입니다.</S.CheckedMessage>
-              ) : (
-                <S.ErrorMessage>사용중인 닉네임입니다.</S.ErrorMessage>
-              )
-            ) : (
-              <S.ErrorMessage>중복검사 해주세요.</S.ErrorMessage>
-            )
-          ) : null}
         </S.NameWrapper>
 
         <S.EmailWrapper>

@@ -34,14 +34,14 @@ export const Container = styled.form`
   box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.25);
 `;
 
-export const ProfileImage = styled.div`
+export const ProfileImage = styled.img`
   position: absolute;
   width: 220px;
   height: 220px;
   left: 62px;
   top: 51px;
   border-radius: 200px;
-  background: #d9d9d9;
+  background: #e5edf2;
 `;
 
 export const UpperDiv = styled.div`
@@ -194,19 +194,23 @@ export const TagDiv = styled.div`
   height: 42px;
   display: flex;
   flex-direction: row;
+  text-align: center;
 `;
 
 export const UserTag = styled.div`
   align-items: center;
   padding: 10px 5px;
-  gap: 20px;
-
   width: 100px;
-  height: 22px;
+  height: 25px;
 
   background: #ffffff;
   border: 1px solid #8a8a8a;
   border-radius: 10px;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
 `;
 
 export const ChangeInfo = styled.button`

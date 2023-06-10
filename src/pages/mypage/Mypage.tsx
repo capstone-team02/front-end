@@ -22,7 +22,9 @@ const Mypage = () => {
         <S.Vertical></S.Vertical>
         <S.Horiziontal></S.Horiziontal>
         <S.UpperDiv>
-          <S.ProfileImage></S.ProfileImage>
+          <S.ProfileImage
+            src={require("../../imgs/icon/logo.png")}
+          ></S.ProfileImage>
           <S.UserInfoContainer>
             <S.WelcomeWrapper>
               <S.Nickname>{loginInfo.nickname}</S.Nickname>
@@ -39,12 +41,12 @@ const Mypage = () => {
         <S.Email>{loginInfo.email}</S.Email>
         <S.UserTagWrapper>
           <S.TagDiv>
-            <S.UserTag></S.UserTag>
-            <S.UserTag></S.UserTag>
+            <S.UserTag>20대</S.UserTag>
+            <S.UserTag>여성</S.UserTag>
           </S.TagDiv>
           <S.TagDiv>
-            <S.UserTag></S.UserTag>
-            <S.UserTag></S.UserTag>
+            <S.UserTag>조용한</S.UserTag>
+            <S.UserTag>교통좋은</S.UserTag>
           </S.TagDiv>
         </S.UserTagWrapper>
         <S.ChangeInfo>정보 변경</S.ChangeInfo>

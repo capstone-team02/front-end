@@ -1,13 +1,23 @@
 import styled from "styled-components";
-
+export const Container = styled.div`
+  width: 100vw;
+  height: 100%;
+`;
 export const UpperContainer = styled.div`
+  width: 100vw;
+  height: 235px;
+  oveflow-x: hidden;
+  display: flex;
+  justify-content: center;
+`;
+
+export const UpperWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   width: 1285px;
   height: 100%;
-  margin-left: 115px;
-  margin-top: 65px;
+  margin-top: 55px;
 `;
 
 export const MypageIcon = styled.img`
@@ -79,9 +89,9 @@ export const MapIconImg = styled.img`
 `;
 
 export const MainBanner = styled.img`
-  width: 100vw;
+  width: 100%;
   height: auto;
-  margin-top: 115px;
+  //margin-top: 115px;
 `;
 
 export const RecommendTopContainer = styled.div`
@@ -117,28 +127,50 @@ export const RecommendationWrapper = styled.div`
 export const RecommendationElementWrapper = styled.div`
   width: 440px;
   height: 350px;
-  background: yllow;
   display: flex;
   flex-direction: column;
 `;
 
 export const CityImg = styled.img`
-  width: 440px;
+  width: 100%;
   height: 250px;
 `;
 
 export const CityBox = styled.div`
-  width: 440px;
+  width: 408px;
   height: 100px;
-
+  padding: 31px 15px;
   background: #ffffff;
   border: 1px solid #000000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #000000;
+`;
+
+export const TextBox = styled.div`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  color: #000000;
+`;
+
+export const ScoreBox = styled.div`
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+
+  color: #868686;
 `;
 
 export const BottomBox = styled.div`
-  width: 100vw;
+  width: 1669;
   height: 120px;
   margin-top: 80px;
   background: rgba(131, 131, 131, 0.5);
   border: 1px solid rgba(61, 61, 61, 0.5);
+  overflow-x: hidden;
 `;

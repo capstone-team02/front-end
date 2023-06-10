@@ -6,6 +6,7 @@ import { log } from "console";
 const SIGNIN_URI = "/auth/signin";
 const SIGNUP_URI = "/auth/signup";
 const NICKNAMECHECK_URI = "/auth/checkNickname";
+const EMAILCHECK_URI = "/auth/checkEmail";
 const LOGINUSER_URI = "/auth/loginUserInfo";
 
 export const loginPost = (loginForm: ILoginForm) =>
@@ -25,17 +26,17 @@ export const signupPost = (signupForm: ISignupForm) =>
   baseApi.post(SIGNUP_URI, {
     email: signupForm.email,
     password: signupForm.password,
-    nickname: signupForm.nickname,
+    username: signupForm.username,
     isFemale: signupForm.isFemale,
   });
 
-export const nicknameCheckPost = (username: string) =>
+export const nicknameCheckPost = (nickname: string) =>
   baseApi.post(NICKNAMECHECK_URI, {
-    nickname: username,
+    nickname: nickname,
   });
 
 export const emailCheckPost = (email: string) =>
-  baseApi.post(NICKNAMECHECK_URI, {
+  baseApi.post(EMAILCHECK_URI, {
     email: email,
   });
 
