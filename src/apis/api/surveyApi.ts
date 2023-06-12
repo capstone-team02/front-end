@@ -30,9 +30,7 @@ export const surveyPost = (surveyForm: ISurveyForm) =>
     advantage: surveyForm.advantage,
     disadvantage: surveyForm.disadvantage,
     recommendAge: surveyForm.recommendAge,
-    recommendHousing: surveyForm.recommendHousing,
     age: surveyForm.age,
     star: surveyForm.star,
     review: surveyForm.review,
-    isFemale: surveyForm.isFemale,
   });

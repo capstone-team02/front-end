@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export interface ISurveyForm {
   userEmail: string;
   district: string;
@@ -5,14 +7,16 @@ export interface ISurveyForm {
   advantage: string[];
   disadvantage: string[];
   recommendAge: string;
-  recommendHousing: string;
   age: string;
   star: string;
   review: string;
-  isFemale: boolean;
 }
 
-export interface IMapDistrictForm{
-
+export interface IMapDistrictForm {
   district: string;
+}
+
+export interface IPropsForm {
+  result: string[];
+  setResult: React.Dispatch<SetStateAction<string[]>>;
 }

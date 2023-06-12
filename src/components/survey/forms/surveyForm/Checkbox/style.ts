@@ -29,3 +29,5 @@ export const CheckBox = styled.div<{ selected: boolean }>`
 export const Input = styled.input`
   display: none;
 `;
+
+export const Label = styled.label``;

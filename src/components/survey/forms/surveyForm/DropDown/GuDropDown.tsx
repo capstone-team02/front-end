@@ -2,8 +2,15 @@ import * as S from "./style";
 import { useState, useCallback, useEffect } from "react";
 import { districtGet } from "../../../../../apis/api/surveyApi";
 import React from "react";
+import { SetStateAction } from "react";
 
-function GuDropDown() {
+function GuDropDown({
+  districtResult,
+  setDistrictResult,
+}: {
+  districtResult: string;
+  setDistrictResult: React.Dispatch<SetStateAction<string>>;
+}) {
   const [isOpenGu, setIsOpenGu] = useState<boolean>(false);
   const [isOpenDong, setIsOpenDong] = useState<boolean>(false);
 
@@ -46,6 +53,7 @@ function GuDropDown() {
   const onSelectDong = useCallback(
     (dongSelect: React.SetStateAction<string>) => {
       setDongSelect(dongSelect);
+      setDistrictResult(dongSelect);
       console.log("dongSelect" + guSelect);
     },
     []
@@ -59,10 +67,6 @@ function GuDropDown() {
 
         console.log(response.data);
         setDistricts(response.data);
-
-        //setDistricts(response.data.guName, response.data.)
-        // setDistrictNames(response.data);
-        // console.log(districtNames);
       } catch (e) {
         console.log(e);
       }

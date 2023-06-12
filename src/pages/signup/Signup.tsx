@@ -62,7 +62,10 @@ function SignUp() {
           email: data.email,
           password: data.password,
           isFemale: data.isFemale,
-        }).then(() => navigate("/survey"));
+        }).then(() => {
+          navigate("/survey");
+          localStorage.setItem("email", data.email);
+        });
       } catch (error) {
         console.log(error);
       }

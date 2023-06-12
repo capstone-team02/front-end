@@ -19,7 +19,7 @@ import GuDropDown from "../../components/survey/forms/surveyForm/DropDown/GuDrop
 import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/AdvantageCheckbox";
 import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import DisadvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/DisadvantageCheckbox";
-import StarDropDown from "../../components/survey/forms/surveyForm/DropDown/StarDropDown";
+import { resourceLimits } from "worker_threads";
 
 function Survey() {
   const navigate = useNavigate();
@@ -32,11 +32,9 @@ function Survey() {
     advantage: [],
     disadvantage: [],
     recommendAge: "",
-    recommendHousing: "",
     age: "",
     star: "",
     review: "",
-    isFemale: true,
   });
 
   const {
@@ -49,56 +47,6 @@ function Survey() {
   } = useForm<ISurveyForm>({
     defaultValues: surveyForm,
   });
-  const [districts, setDistricts] = useState<IDistrcitForm>({
-    guName: "",
-    districtName: "",
-  });
-  // // const [districts, setDistricts] = useState<false>();
-  // useEffect(() => {
-  //   districtGet().then((response) => {
-  //     //console.log(response);
-  //     setDistricts(response);
-  //   });
-  // }, []);
-
-  // const handleNicknameCheck = async () => {
-  //   const nickname = getValues("nickname");
-  //   setNicknameChecked(true);
-  //   console.log(nickname);
-  //   try {
-  //     await nicknameCheckPost(nickname).then((res) => {
-  //       console.log(res.data);
-  //     });
-  //     console.log("success");
-
-  //     setValidNickname(true);
-  //     setNicknameChecked(true);
-  //   } catch (error) {
-  //     setValidNickname(false);
-  //     setNicknameChecked(true);
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleEmailCheck = async () => {
-  //   const email = getValues("email");
-  //   setEmailChecked(true);
-  //   console.log(email);
-  //   try {
-  //     await emailCheckPost(email).then((res) => {
-  //       console.log(res.data);
-  //     });
-  //     console.log("success");
-
-  //     setValidEmail(true);
-  //     setEmailChecked(true);
-  //   } catch (error) {
-  //     setValidEmail(false);
-  //     setEmailChecked(true);
-  //     console.log(error);
-  //   }
-  // };
-  //const { allDistricts } = useDistrict();
 
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
@@ -107,27 +55,30 @@ function Survey() {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
 
+  const userEmail = localStorage.getItem("email");
   const onValid = async (data: ISurveyForm) => {
-    console.log("Data " + data.disadvantage);
+    console.log("Data " + data.age);
     try {
+      console.log("data.mood " + moodResult);
       await surveyPost({
-        userEmail: data.userEmail,
-        district: data.district,
-        mood: data.mood,
-        advantage: data.advantage,
-        disadvantage: data.disadvantage,
+        userEmail: userEmail,
+        district: districtResult,
+        mood: moodResult,
+        advantage: advantageResult,
+        disadvantage: disadvantageResult,
         recommendAge: data.recommendAge,
-        recommendHousing: data.recommendHousing,
         age: data.age,
         star: data.star,
         review: data.review,
-        isFemale: data.isFemale,
       }).then(onClickToggleModal);
     } catch (error) {
       console.log(error);
     }
   };
-
+  const [moodResult, setMoodResult] = useState<any>([]);
+  const [advantageResult, setAdvantageResult] = useState<any>([]);
+  const [disadvantageResult, setDisadvantageResult] = useState<any>([]);
+  const [districtResult, setDistrictResult] = useState("");
   return (
     <S.FormContainer>
       <S.Title>회원가입</S.Title>
@@ -142,45 +93,49 @@ function Survey() {
       <S.Form onSubmit={handleSubmit(onValid)}>
         <S.AgeWrapper>
           <S.Label>나이</S.Label>
-          <S.Input />
+          <S.Input {...register("age")} />
         </S.AgeWrapper>
-
         <S.TownContainer>
           <S.Label>살고 있는 동네</S.Label>
           <S.TownWrapper>
-            <GuDropDown />
+            <GuDropDown
+              districtResult={districtResult}
+              setDistrictResult={setDistrictResult}
+            />
           </S.TownWrapper>
         </S.TownContainer>
 
         <S.Wrapper2>
           <S.Label>분위기</S.Label>
           <S.CheckBoxWrapper>
-            <MoodCheckBox id={"mood"} />
+            <MoodCheckBox result={moodResult} setResult={setMoodResult} />
           </S.CheckBoxWrapper>
         </S.Wrapper2>
-
         <S.Wrapper2>
           <S.Label>동네 장점</S.Label>
           <S.CheckBoxWrapper>
-            <AdvantageCheckBox />
+            <AdvantageCheckBox
+              result={advantageResult}
+              setResult={setAdvantageResult}
+            />
           </S.CheckBoxWrapper>
         </S.Wrapper2>
-
         <S.Wrapper2>
           <S.Label>동네 단점</S.Label>
           <S.CheckBoxWrapper>
-            <DisadvantageCheckBox id={"disadvantage"} />
+            <DisadvantageCheckBox
+              result={disadvantageResult}
+              setResult={setDisadvantageResult}
+            />
           </S.CheckBoxWrapper>
         </S.Wrapper2>
         <S.Wrapper3>
           <S.Label>우리 동네 평가하기</S.Label>
-          <S.StarWrapper>
-            <StarDropDown />
-          </S.StarWrapper>
+          <S.StarWrapper></S.StarWrapper>
         </S.Wrapper3>
         <S.Wrapper4>
           <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>
-          <S.ReviewInput></S.ReviewInput>
+          <S.ReviewInput {...register("review")}></S.ReviewInput>
         </S.Wrapper4>
         {isOpenModal && (
           <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
