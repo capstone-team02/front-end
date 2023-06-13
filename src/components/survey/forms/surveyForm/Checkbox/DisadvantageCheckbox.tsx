@@ -30,7 +30,6 @@ function DisadvantageCheckBox({ result, setResult }: IPropsForm) {
   useEffect(() => {
     console.log("useEffect");
     console.log("moodList " + disadvantageList);
-    //setMoodValue(moodList);
     setResult(disadvantageList);
     console.log("result " + result);
   }, [disadvantageValue]);
@@ -51,13 +50,10 @@ function DisadvantageCheckBox({ result, setResult }: IPropsForm) {
     }
   };
   useEffect(() => {
-    console.log("useEffect");
     const fetchData = async () => {
-      console.log("a");
       try {
         const response = await disadvantageGet();
         setDisadvantage(response.data);
-        console.log(response.data);
       } catch (e) {
         console.log(e);
       }

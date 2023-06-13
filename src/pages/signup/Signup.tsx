@@ -5,7 +5,6 @@ import { ISignupForm } from "../../interfaces/accountForm";
 import { emailCheckPost, signupPost } from "../../apis/api/accountApi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
-import LoginSuccessModal from "../../components/account/forms/LoginSuccessModal";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -36,10 +35,7 @@ function SignUp() {
     setEmailChecked(true);
     console.log(email);
     try {
-      await emailCheckPost(email).then((res) => {
-        console.log(res.data);
-      });
-      console.log("success");
+      await emailCheckPost(email).then((res) => {});
 
       setValidEmail(true);
       setEmailChecked(true);
@@ -56,7 +52,6 @@ function SignUp() {
       setError("verifyPassword", { message: "비밀번호가 일치하지 않습니다." });
     } else {
       try {
-        console.log(data);
         await signupPost({
           username: data.username,
           email: data.email,

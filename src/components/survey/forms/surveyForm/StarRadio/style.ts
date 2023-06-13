@@ -38,19 +38,10 @@ export const StarWrapper = styled.div<{ clicked: boolean }>`
     cursor: pointer;
   }
 
-  // :hover svg {
-  //   color: #f9f12f;
-  // }
-
-  // & svg:hover ~ svg {
-  //   color: #acacac;
-  // }
 
   .yellow {
     color: f9f12f;
   }
-
-  // background-color: ${(props) => (props.clicked ? "#f9f12f " : " #acacac")};
 `;
 
 export const Input = styled.input`

@@ -173,26 +173,7 @@ export const DropDownWrapper2 = styled.ul`
   margin-top: 7px;
   position: absolute;
 `;
-// export const DropDownContainer = styled.ul`
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   padding: 16px 30px;
-//   gap: 80px;
-//   width: 120px;
-//   height: 190px;
 
-//   position: absolute;
-
-//   background: #ffffff;
-//   border: 1px solid #8a8a8a;
-//   border-radius: 10px;
-//   list-style: none;
-//   overflow-y: scroll;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// `;
 export const ReviewInput = styled.input`
   display: flex;
   flex-direction: row;

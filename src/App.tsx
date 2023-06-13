@@ -19,13 +19,7 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  // const setLoggedIn = useSetRecoilState<ILoggedInAtom>(loggedInAtom);
-  // tokenInfo();
-  // const { data } = useQuery(["loggedInInfo"], getLoggedInInfo, {
-  //   onSuccess: (data) => {
-  //     console.log(axios.defaults.headers.common["Authorization"]);
-  //   },
-  // });
+
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.src =

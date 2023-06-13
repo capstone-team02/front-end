@@ -37,10 +37,7 @@ function GuDropDown({
 
   const [guName, setGuName] = useState([]);
   const [dongName, setDongName] = useState<any[]>([]);
-  //   const [districts, setDistricts] = useState({
-  //     guName: "",
-  //     dongName: "",
-  //   });
+
   const [loading, setLoading] = useState(false);
   const [guSelect, setGuSelect] = useState("구");
   const [dongSelect, setDongSelect] = useState("동");
