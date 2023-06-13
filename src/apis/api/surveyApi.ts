@@ -23,14 +23,19 @@ export const advantageGet = () => baseApi.get(ADVANTAGE_API);
 export const disadvantageGet = () => baseApi.get(DISADVANTAGE_API);
 
 export const surveyPost = (surveyForm: ISurveyForm) =>
-  baseApi.post(SURVEY_API, {
-    userEmail: surveyForm.userEmail,
-    district: surveyForm.district,
-    mood: surveyForm.mood,
-    advantage: surveyForm.advantage,
-    disadvantage: surveyForm.disadvantage,
-    recommendAge: surveyForm.recommendAge,
-    age: surveyForm.age,
-    star: surveyForm.star,
-    review: surveyForm.review,
-  });
+  baseApi
+    .post(SURVEY_API, {
+      userEmail: surveyForm.userEmail,
+      district: surveyForm.district,
+      mood: surveyForm.mood,
+      advantage: surveyForm.advantage,
+      disadvantage: surveyForm.disadvantage,
+      recommendAge: surveyForm.recommendAge,
+      age: surveyForm.age,
+      star: surveyForm.star,
+      review: surveyForm.review,
+    })
+    .then((response) => {
+      console.log("response");
+      localStorage.clear();
+    });

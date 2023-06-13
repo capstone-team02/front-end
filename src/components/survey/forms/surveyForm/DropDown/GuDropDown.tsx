@@ -44,14 +44,12 @@ function GuDropDown({
 
   const onSelectGu = useCallback((guSelect: React.SetStateAction<string>) => {
     setGuSelect(guSelect);
-    console.log("guSelect" + guSelect);
   }, []);
 
   const onSelectDong = useCallback(
     (dongSelect: React.SetStateAction<string>) => {
       setDongSelect(dongSelect);
       setDistrictResult(dongSelect);
-      console.log("dongSelect" + guSelect);
     },
     []
   );
@@ -62,7 +60,6 @@ function GuDropDown({
       try {
         const response = await districtGet();
 
-        console.log(response.data);
         setDistricts(response.data);
       } catch (e) {
         console.log(e);
@@ -89,7 +86,6 @@ function GuDropDown({
                     onSelectGu(name.guName);
                     setIsOpenGu(!isOpenGu);
                     setDongName(name.dongName);
-                    console.log(name.dongName);
                   }}
                 >
                   {name.guName}
@@ -113,7 +109,6 @@ function GuDropDown({
                   onClick={() => {
                     onSelectDong(dong);
                     setIsOpenDong(!isOpenDong);
-                    console.log(dong);
                   }}
                 >
                   {dong}

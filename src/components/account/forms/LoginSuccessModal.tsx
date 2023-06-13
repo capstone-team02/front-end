@@ -28,7 +28,7 @@ function LoginSuccessModal({
       <S.ModalBackGround
         onClick={(e: React.MouseEvent) => {
           //e.preventDefault();
-          navigate("/");
+          navigate("/login");
           if (onClickToggleModal) {
             onClickToggleModal();
           }

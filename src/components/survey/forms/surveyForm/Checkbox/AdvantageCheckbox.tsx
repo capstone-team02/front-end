@@ -28,11 +28,7 @@ function AdvantageCheckBox({ result, setResult }: IPropsForm) {
   };
 
   useEffect(() => {
-    console.log("useEffect");
-    console.log("moodList " + advantageList);
-    //setMoodValue(moodList);
     setResult(advantageList);
-    console.log("result " + result);
   }, [advantageValue]);
 
   const ListSelected = (value: string, index: number) => {
@@ -52,13 +48,10 @@ function AdvantageCheckBox({ result, setResult }: IPropsForm) {
   };
 
   useEffect(() => {
-    console.log("useEffect");
     const fetchData = async () => {
-      console.log("a");
       try {
         const response = await advantageGet();
         setAdvantage(response.data);
-        console.log(response.data);
       } catch (e) {
         console.log(e);
       }

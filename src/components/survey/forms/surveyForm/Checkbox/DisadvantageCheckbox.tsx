@@ -28,10 +28,7 @@ function DisadvantageCheckBox({ result, setResult }: IPropsForm) {
   };
 
   useEffect(() => {
-    console.log("useEffect");
-    console.log("moodList " + disadvantageList);
     setResult(disadvantageList);
-    console.log("result " + result);
   }, [disadvantageValue]);
 
   const ListSelected = (value: string, index: number) => {

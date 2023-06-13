@@ -140,9 +140,7 @@ function Survey() {
         </S.Wrapper4>
         {isOpenModal && (
           <LoginSuccessModal onClickToggleModal={onClickToggleModal}>
-            <S.SurveySuccess
-              onClick={(onClickToggleModal) => navigate("/login")}
-            >
+            <S.SurveySuccess onClick={() => navigate("/login")}>
               회원가입 완료하기
             </S.SurveySuccess>
           </LoginSuccessModal>
