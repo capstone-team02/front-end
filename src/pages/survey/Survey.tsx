@@ -1,5 +1,4 @@
 import * as S from "./style";
-//import * as M from "../../components/account/forms/style";
 import { useForm } from "react-hook-form";
 import { ISignupForm } from "../../interfaces/accountForm";
 import { ISurveyForm } from "../../interfaces/surveyForm";
@@ -20,7 +19,8 @@ import AdvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox
 import MoodCheckBox from "../../components/survey/forms/surveyForm/Checkbox/MoodCheckBox";
 import DisadvantageCheckBox from "../../components/survey/forms/surveyForm/Checkbox/DisadvantageCheckbox";
 import { resourceLimits } from "worker_threads";
-
+import { GiRoundStar } from "react-icons/gi";
+import StarRadio from "../../components/survey/forms/surveyForm/StarRadio/StarRadio";
 function Survey() {
   const navigate = useNavigate();
   const [submit, setSubmit] = useState(false);
@@ -51,15 +51,12 @@ function Survey() {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
   const onClickToggleModal = useCallback(() => {
-    console.log(!isOpenModal);
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
 
   const userEmail = localStorage.getItem("email");
   const onValid = async (data: ISurveyForm) => {
-    console.log("Data " + data.age);
     try {
-      console.log("data.mood " + moodResult);
       await surveyPost({
         userEmail: userEmail,
         district: districtResult,
@@ -68,7 +65,7 @@ function Survey() {
         disadvantage: disadvantageResult,
         recommendAge: data.recommendAge,
         age: data.age,
-        star: data.star,
+        star: starResult,
         review: data.review,
       }).then(onClickToggleModal);
     } catch (error) {
@@ -79,6 +76,8 @@ function Survey() {
   const [advantageResult, setAdvantageResult] = useState<any>([]);
   const [disadvantageResult, setDisadvantageResult] = useState<any>([]);
   const [districtResult, setDistrictResult] = useState("");
+  const [starResult, setStarResult] = useState("");
+
   return (
     <S.FormContainer>
       <S.Title>회원가입</S.Title>
@@ -131,7 +130,9 @@ function Survey() {
         </S.Wrapper2>
         <S.Wrapper3>
           <S.Label>우리 동네 평가하기</S.Label>
-          <S.StarWrapper></S.StarWrapper>
+          <S.StarWrapper>
+            <StarRadio starResult={starResult} setStarResult={setStarResult} />
+          </S.StarWrapper>
         </S.Wrapper3>
         <S.Wrapper4>
           <S.Label>우리동네 한줄 리뷰(50자제한)</S.Label>

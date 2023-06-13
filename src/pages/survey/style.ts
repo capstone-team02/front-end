@@ -424,7 +424,9 @@ export const UnderBar = styled.div`
 `;
 
 export const StarWrapper = styled.div`
-  width: 300px;
-  height: 100%;
-  margin-top: 14px;
+  width: 600px;
+  height: 102px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
 `;

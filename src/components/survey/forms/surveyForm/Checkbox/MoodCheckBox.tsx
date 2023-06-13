@@ -13,6 +13,7 @@ function MoodCheckBox({ result, setResult }: IPropsForm) {
     false,
     false,
     false,
+    false,
   ]);
 
   const [moodList, setMoodList] = useState<any[]>([]);
@@ -85,21 +86,7 @@ function MoodCheckBox({ result, setResult }: IPropsForm) {
   );
   return (
     <>
-      {/* {mood.map((moodName) => (
-        <S.CheckBox
-          key={moodName.id}
-          selected={selected[moodName.id]}
-          onClick={() => {
-            toggleSelected(moodName.id);
-            ListSelected(moodName.disadvantageKor, moodName.id);
-          }}
-        >
-          {moodName.disadvantageKor}
-        </S.CheckBox>
-      ))}
-      <S.Input id={id} onChange={onChange} type="checkbox" /> */}
-
-      {mood.map((item) => {
+    {mood.map((item) => {
         return (
           <S.Label className="checkboxLabel" key={item.id}>
             <S.Input

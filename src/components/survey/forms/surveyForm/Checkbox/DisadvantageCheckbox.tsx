@@ -13,6 +13,7 @@ function DisadvantageCheckBox({ result, setResult }: IPropsForm) {
     false,
     false,
     false,
+    false,
   ]);
 
   const [disadvantageList, setDisadvantageList] = useState<any[]>([]);
