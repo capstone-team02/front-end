@@ -53,7 +53,7 @@ function Map() {
     },
     {
       guName: "성북구",
-      cityName: "돈암동",
+      cityName: "돈암2동",
       img: "sungbook",
     },
   ];

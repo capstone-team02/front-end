@@ -58,7 +58,7 @@ function Survey() {
   const onValid = async (data: ISurveyForm) => {
     try {
       await surveyPost({
-        userEmail: userEmail,
+        userEmail: localStorage.getItem("email"),
         district: districtResult,
         mood: moodResult,
         advantage: advantageResult,
